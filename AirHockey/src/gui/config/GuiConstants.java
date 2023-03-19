@@ -1,4 +1,4 @@
-package gui;
+package gui.config;
 
 /**
  * This class includes the constants used by the gui package
