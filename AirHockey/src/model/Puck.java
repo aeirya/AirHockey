@@ -1,9 +1,9 @@
 package model;
 
-public class Ball extends GameObject{
+public class Puck extends GameObject{
     private int radius;
-    public Ball(Coordinates coordinates, Coordinates speed) {
-        super(coordinates, speed);
+    public Puck(Vector vector, Vector speed) {
+        super(vector, speed);
     }
 
     public int getRadius() {

@@ -1,9 +1,9 @@
 package model;
 
-public class Controller extends GameObject{
+public class Mallet extends GameObject{
     private int radius;
-    public Controller(Coordinates coordinates, Coordinates speed) {
-        super(coordinates, speed);
+    public Mallet(Vector vector, Vector speed) {
+        super(vector, speed);
     }
 
     public int getRadius() {

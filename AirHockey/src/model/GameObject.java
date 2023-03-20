@@ -1,31 +1,31 @@
 package model;
 
 public abstract class GameObject {
-    private Coordinates coordinates; //up left
-    private Coordinates speed;
+    private Vector position; //up left
+    private Vector speed;
 
-    public GameObject(Coordinates coordinates, Coordinates speed) {
-        this.coordinates = coordinates;
+    public GameObject(Vector position, Vector speed) {
+        this.position = position;
         this.speed = speed;
     }
 
-    public GameObject(Coordinates coordinates){
-        this(coordinates , new Coordinates(0 , 0));
+    public GameObject(Vector position){
+        this(position, new Vector(0 , 0));
     }
 
-    public Coordinates getCoordinates() {
-        return coordinates;
+    public Vector getCoordinates() {
+        return position;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public void setCoordinates(Vector vector) {
+        this.position = vector;
     }
 
-    public Coordinates getSpeed() {
+    public Vector getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Coordinates speed) {
+    public void setSpeed(Vector speed) {
         this.speed = speed;
     }
 }
