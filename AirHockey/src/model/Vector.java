@@ -24,4 +24,9 @@ public class Vector {
     public void setY(int y) {
         this.y = y;
     }
+
+    /** Squared euclidean distance of two vectors */
+    public int dist2(Vector other) {
+        return (x - other.x)^2 + (y - other.y)^2;
+    }
 }
