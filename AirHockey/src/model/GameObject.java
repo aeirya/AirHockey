@@ -28,4 +28,9 @@ public class GameObject {
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
+
+    public void setVelocity(int x, int y) {
+        setVelocity(new Vector(x, y));
+    }
+
 }
