@@ -15,8 +15,8 @@ public class HorizontalWall extends Wall {
     }
 
     @Override
-    public int dist2(GameObject other) {
-        return (other.getPosition().getY() - getPosition().getY())^2;
+    public long dist(GameObject other) {
+        return Math.abs(other.getPosition().getY() - getPosition().getY());
     }
 
     @Override

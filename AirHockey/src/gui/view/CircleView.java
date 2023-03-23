@@ -37,7 +37,6 @@ public abstract class CircleView extends View {
     @Override
     public void draw(Graphics2D g) {
         update(circle);
-        System.out.println("X IS " + x);
         g.setStroke(new BasicStroke(10f));
         g.setColor(color);
 //        g.drawArc(x - radius, y - radius, 2*radius, 2*radius, 0, 360);

@@ -19,6 +19,5 @@ public class WindowThread extends LoopThread {
         window.invalidate();
         window.validate();
         window.repaint();
-        System.out.println("repaint");
     }
 }

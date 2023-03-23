@@ -23,7 +23,7 @@ public abstract class Wall extends GameObject {
 
     protected abstract void bounce(GameObject other);
 
-    public abstract int dist2(GameObject other);
+    public abstract long dist(GameObject other);
 
     public int getLength() {
         return length;
@@ -34,4 +34,8 @@ public abstract class Wall extends GameObject {
     public abstract Vector getStartPoint();
 
     public abstract Vector getEndPoint();
+
+    public boolean intersects(Puck puck) {
+        return puck.intersects(this);
+    }
 }

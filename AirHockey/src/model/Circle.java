@@ -17,10 +17,6 @@ public class Circle extends GameObject {
         return radius;
     }
 
-    public int getRadius2() {
-        return radius * radius;
-    }
-
     public boolean intersects(Circle other) {
         int radiiSum = this.getRadius() + other.getRadius();
         return (radiiSum*radiiSum) < getPosition().dist2(other.getPosition());

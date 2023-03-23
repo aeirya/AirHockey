@@ -7,6 +7,7 @@ import util.LoopThread;
 public class GameLoopThread extends LoopThread {
     private final Table table;
     private long lastTime;
+    private double gameSpeed = 0.5;
 
     // TODO: replace this dependency injection
     public GameLoopThread(Table table) {
@@ -19,6 +20,7 @@ public class GameLoopThread extends LoopThread {
     @Override
     protected void runOnce() {
         double dt = (double)getDeltaTime()/1000;
+        dt = dt * gameSpeed;
         table.passTime(dt);
         table.checkCollisions();
     }

@@ -15,8 +15,8 @@ public class VerticalWall extends Wall {
     }
 
     @Override
-    public int dist2(GameObject other) {
-        return (other.getPosition().getX() - getPosition().getX())^2;
+    public long dist(GameObject other) {
+        return Math.abs(other.getPosition().getX() - getPosition().getX());
     }
 
     @Override

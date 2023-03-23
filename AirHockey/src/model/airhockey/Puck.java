@@ -11,6 +11,6 @@ public class Puck extends Circle {
     }
 
     public boolean intersects(Wall wall) {
-        return wall.dist2(this) < getRadius2();
+        return wall.dist(this) < this.getRadius();
     }
 }
