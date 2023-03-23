@@ -1,5 +1,7 @@
 package gui.config;
 
+import model.Vector;
+
 import java.awt.*;
 
 public class GuiConfig {
@@ -29,5 +31,14 @@ public class GuiConfig {
 
     public static int getWindowHeight() {
         return GuiConstants.WINDOW_HEIGHT * getInstance().getDisplayHeight() / 100;
+    }
+
+    public static Dimension getWindowDimension() {
+        // todo: handle this in window initialization
+        return new Dimension(getWindowWidth()*96/100, getWindowHeight()*9/10);
+    }
+
+    public static Vector getWindowCenter() {
+        return new Vector(getWindowWidth()/2, getWindowHeight()/2);
     }
 }

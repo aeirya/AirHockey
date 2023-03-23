@@ -8,12 +8,13 @@ import java.awt.Stroke;
 import model.Vector;
 import model.airhockey.wall.Wall;
 
-public class WallView implements Drawable {
+public class WallView extends View {
     
     private final Wall wall;
 
     public WallView(Wall wall) {
         this.wall = wall;
+        System.out.println("Initiated wall view");
     }
 
     @Override
@@ -21,9 +22,20 @@ public class WallView implements Drawable {
         Vector start = wall.getStartPoint();
         Vector end = wall.getEndPoint();
 
-        Stroke oldStroker = g.getStroke();
-        g.setStroke(new BasicStroke(5f));
-        g.setColor(Color.BLACK);
+        Stroke oldStroke = g.getStroke();
+        g.setStroke(new BasicStroke(wall.getWidth()));
+        g.setColor(Color.RED);
         g.drawLine(start.getX(), start.getY(), end.getX(), end.getY());
+        g.setColor(Color.GREEN);
+        drawBullet(g, start);
+        drawBullet(g, end);
+        g.setStroke(oldStroke);
+    }
+
+    private void drawBullet(Graphics2D g, Vector center) {
+        int w = wall.getWidth()/2;
+        int r = 6*w/5 * 3;
+
+        g.drawArc(center.getX()-r/2, center.getY()-r/2, r, r, 0, 360);
     }
 }
