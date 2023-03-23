@@ -1,5 +1,6 @@
 package model;
 
+// TODO: use vector values between zero and one and scale them to screen size
 public class GameObject {
     private Vector position; //up left
     private Vector velocity;

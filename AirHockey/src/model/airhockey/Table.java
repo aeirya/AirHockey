@@ -25,7 +25,7 @@ public class Table {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
 
-        puck = new Puck(center, new Vector(-10, -10), 25);
+        puck = new Puck(center, new Vector(-300, -300), 25);
         collisionDetector = new CollisionDetector(puck);
 
         this.dimension = dimension;
