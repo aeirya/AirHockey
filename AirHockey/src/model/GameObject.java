@@ -36,10 +36,10 @@ public class GameObject {
     public void onColide(GameObject other) {}
 
     public void move(int dx, int dy) {
-        getPosition().add(dx, dy);
+        setPosition(getPosition().add(dx, dy));
     }
 
-    /** updates the location of ball to after moving dt with constant velocity */
+    /** updates the location of ball to after moving dt seconds with constant velocity */
     public void move(double dt) {
         move((int)(getVelocity().getX()*dt), (int)(getVelocity().getY()*dt));
     }

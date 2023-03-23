@@ -9,6 +9,7 @@ public abstract class CircleView extends View {
     private int y;
     private int radius;
     protected Color color;
+    private Circle circle;
 
     protected CircleView(int x, int y, int radius) {
         this.x = x;
@@ -23,6 +24,7 @@ public abstract class CircleView extends View {
     }
 
     protected void update(Circle circle) {
+        this.circle = circle;
         x = circle.getPosition().getX();
         y = circle.getPosition().getY();
         radius = circle.getRadius();
@@ -34,7 +36,8 @@ public abstract class CircleView extends View {
 
     @Override
     public void draw(Graphics2D g) {
-        System.out.println("drawing puck");
+        update(circle);
+        System.out.println("X IS " + x);
         g.setStroke(new BasicStroke(10f));
         g.setColor(color);
 //        g.drawArc(x - radius, y - radius, 2*radius, 2*radius, 0, 360);

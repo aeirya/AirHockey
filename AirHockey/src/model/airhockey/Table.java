@@ -42,6 +42,10 @@ public class Table {
         walls.add(go);
     }
 
+    /**
+     *
+     * @param dt passed time in ms
+     */
     public void passTime(double dt) {
         puck.move(dt);
     }

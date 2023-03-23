@@ -49,10 +49,6 @@ public class Game implements IGame {
     }
 
     public void loop() {
-        new Thread(
-                () -> {
-
-                }
-        ).start();
+        new GameLoopThread(table).start();
     }
 }
