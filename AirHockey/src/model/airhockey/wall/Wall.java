@@ -2,20 +2,36 @@ package model.airhockey.wall;
 
 import model.GameObject;
 import model.Vector;
+import model.airhockey.Puck;
 
 public abstract class Wall extends GameObject {
-    private Vector startPoint;
-    private Vector endPoint;
+    private final int length;
+    private final int width;
 
-    public abstract void bounce(GameObject other);
-
-    public Vector getStartPoint() {
-        return startPoint;
+    protected Wall(Vector position, int length) {
+        super(position);
+        this.length = length;
+        width = 18;
     }
 
-    public Vector getEndPoint() {
-        return endPoint;
+    @Override
+    public void onColide(GameObject go) {
+        if (go instanceof Puck) {
+            bounce(go);
+        }
     }
+
+    protected abstract void bounce(GameObject other);
 
     public abstract int dist2(GameObject other);
+
+    public int getLength() {
+        return length;
+    }
+
+    public int getWidth() { return width; }
+
+    public abstract Vector getStartPoint();
+
+    public abstract Vector getEndPoint();
 }

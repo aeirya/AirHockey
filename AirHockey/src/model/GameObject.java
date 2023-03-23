@@ -33,4 +33,18 @@ public class GameObject {
         setVelocity(new Vector(x, y));
     }
 
+    public void onColide(GameObject other) {}
+
+    public void move(int dx, int dy) {
+        getPosition().add(dx, dy);
+    }
+
+    /** updates the location of ball to after moving dt with constant velocity */
+    public void move(double dt) {
+        move((int)(getVelocity().getX()*dt), (int)(getVelocity().getY()*dt));
+    }
+
+    public boolean intersects(GameObject other) {
+        return false;
+    }
 }
