@@ -18,6 +18,7 @@ public class TableView extends View {
     private int width;
     private int height;
     private Vector position;
+    private Table table;
 
     public TableView() {
 //        walls = new ArrayList<>();
@@ -39,7 +40,7 @@ public class TableView extends View {
     }
 
     private void updateParams(GameState state) {
-        Table table = state.getTable();
+        table = state.getTable();
         width = (int) table.getDimension().getWidth();
         height = (int) table.getDimension().getHeight();
         position = table.getCenter().add(-width/2, -height/2);
@@ -58,6 +59,15 @@ public class TableView extends View {
         g.fillRoundRect(
                 position.getX(), position.getY(), width, height, 5, 5
         );
+
+        // center circle
+        int r = width / 9;
+        g.setStroke(new BasicStroke(10f));
+        g.setColor(Color.LIGHT_GRAY);
+//        g.drawArc(position.getX() - r, position.getY() - r, r, r, 0, 360);
+        int cX = table.getCenter().getX() - r;
+        int cY = table.getCenter().getY() - r;
+        g.drawRoundRect(cX, cY, 2*r, 2*r, 2*r, 2*r);
         super.draw(g);
     }
 }

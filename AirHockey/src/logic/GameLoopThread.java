@@ -7,7 +7,7 @@ import util.LoopThread;
 public class GameLoopThread extends LoopThread {
     private final Table table;
     private long lastTime;
-    private double gameSpeed = 0.5;
+    private final double gameSpeed = GameParameters.gameSpeed;
 
     // TODO: replace this dependency injection
     public GameLoopThread(Table table) {
