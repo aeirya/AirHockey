@@ -5,6 +5,7 @@ import event.MenuType;
 import game.GameParameters;
 import game.IGame;
 import gui.config.GuiConfig;
+import util.LoopThread;
 
 import javax.swing.*;
 
@@ -17,7 +18,7 @@ public class Window extends JFrame {
     public Window(IGame game) {
         this.eventHandler = game;
         this.game = game;
-        input = new KeyInput(eventHandler);
+        input = new KeyInput(game);
         menuManager = new MenuManager(game);
 
         setTitle("Air Hockey");
@@ -46,5 +47,11 @@ public class Window extends JFrame {
 
     public void loop() {
         new WindowThread(this, GameParameters.FPS).start();
+        new LoopThread(2){
+            @Override
+            protected void runOnce() {
+                input.pushKeyboardEvents();
+            }
+        }.start();
     }
 }

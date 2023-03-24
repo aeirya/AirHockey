@@ -6,7 +6,7 @@ public abstract class LoopThread extends Thread {
     /** sleep time in ms */
     private final int interval;
 
-    protected LoopThread(int interval) {
+    public LoopThread(int interval) {
         this.interval = interval;
     }
 

@@ -28,7 +28,7 @@ public class KeyInput extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
 //        System.out.println("received keypress: " + e.getKeyChar());
         pressedKeys.put(getKey(e), true);
-        pushKeyboardEvents();
+//        pushKeyboardEvents();
     }
 
     @Override

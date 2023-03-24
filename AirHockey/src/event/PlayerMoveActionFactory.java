@@ -20,21 +20,21 @@ public class PlayerMoveActionFactory {
         return new PlayerMoveAction(playerID, dx, dy);
     }
 
-    private int charToDelta(char key) {
-        switch (key) {
-            case GameKeys.P1_MOVE_DOWN:
-            case GameKeys.P1_MOVE_RIGHT:
-            case GameKeys.P2_MOVE_DOWN:
-            case GameKeys.P2_MOVE_RIGHT:
-                return 1;
-            case GameKeys.P1_MOVE_UP:
-            case GameKeys.P1_MOVE_LEFT:
-            case GameKeys.P2_MOVE_UP:
-            case GameKeys.P2_MOVE_LEFT:
-                return -1;
-        }
-        return 0;
-    }
+//    private int charToDelta(char key) {
+//        switch (key) {
+//            case GameKeys.P1_MOVE_DOWN:
+//            case GameKeys.P1_MOVE_RIGHT:
+//            case GameKeys.P2_MOVE_DOWN:
+//            case GameKeys.P2_MOVE_RIGHT:
+//                return 1;
+//            case GameKeys.P1_MOVE_UP:
+//            case GameKeys.P1_MOVE_LEFT:
+//            case GameKeys.P2_MOVE_UP:
+//            case GameKeys.P2_MOVE_LEFT:
+//                return -1;
+//        }
+//        return 0;
+//    }
 
     private List<Character> getKeys(int player) {
         if (player == 0) return GameKeys.player1Keys;
@@ -58,27 +58,27 @@ public class PlayerMoveActionFactory {
         switch (key) {
             case GameKeys.P1_MOVE_DOWN:
             case GameKeys.P2_MOVE_DOWN:
-                return -1;
+                return 1;
             case GameKeys.P1_MOVE_UP:
             case GameKeys.P2_MOVE_UP:
-                return 1;
+                return -1;
         }
         return 0;
     }
 
-    private int getPlayerID(char key) {
-        switch (key) {
-            case 'W':
-            case 'A':
-            case 'S':
-            case 'D':
-                return 0;
-            case 'I':
-            case 'J':
-            case 'K':
-            case 'L':
-                return 1;
-        }
-        return -1;
-    }
+//    private int getPlayerID(char key) {
+//        switch (key) {
+//            case 'W':
+//            case 'A':
+//            case 'S':
+//            case 'D':
+//                return 0;
+//            case 'I':
+//            case 'J':
+//            case 'K':
+//            case 'L':
+//                return 1;
+//        }
+//        return -1;
+//    }
 }

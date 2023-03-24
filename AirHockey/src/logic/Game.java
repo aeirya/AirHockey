@@ -1,11 +1,13 @@
 package logic;
 
 import event.DummyEventHandler;
+import event.EventHandler;
 import event.IEvent;
 import event.IEventHandler;
 import game.IGame;
 import gui.Window;
 import gui.config.GuiConfig;
+import gui.event.PlayerMoveAction;
 import model.Player;
 import model.Vector;
 import model.airhockey.Table;
@@ -32,7 +34,7 @@ public class Game implements IGame {
         player1.setPosition(new Vector(300, 300));
         player2.setPosition(new Vector(900, 300));
 
-        eventHandler = new DummyEventHandler();
+        eventHandler = new EventHandler();
         window = new Window(this);
         window.loop();
         loop();
@@ -47,8 +49,16 @@ public class Game implements IGame {
     }
 
     @Override
+    public void movePlayer(PlayerMoveAction action) {
+        Player player = player2;
+        if (action.playerID == 0) player = player1;
+        player.move(action.dx * 1, action.dy * 1);
+    }
+
+    @Override
     public void handle(IEvent event) {
-        eventHandler.handle(event);
+//        eventHandler.handle(event);
+        event.visit(this);
     }
 
     public void loop() {
