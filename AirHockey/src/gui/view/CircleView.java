@@ -1,13 +1,13 @@
 package gui.view;
 
-import model.Circle;
+import model.geometric.Circle;
 
 import java.awt.*;
 
-public abstract class CircleView extends View {
+public class CircleView extends View {
     private int x;
     private int y;
-    private int radius;
+    protected int radius;
     protected Color color;
     private Circle circle;
 
@@ -23,7 +23,12 @@ public abstract class CircleView extends View {
         this(0, 0, 0);
     }
 
-    protected void update(Circle circle) {
+    protected CircleView(Color color) {
+        this();
+        this.color = color;
+    }
+
+    public void update(Circle circle) {
         this.circle = circle;
         x = circle.getPosition().getX();
         y = circle.getPosition().getY();
@@ -41,6 +46,8 @@ public abstract class CircleView extends View {
         g.setColor(color);
 //        g.drawArc(x - radius, y - radius, 2*radius, 2*radius, 0, 360);
         int r = getRadius();
-        g.fillRoundRect(x-r, y-r, 2*r, 2*r, r, r);
+        g.fillRoundRect(x-r, y-r, 2*r, 2*r, 2*r, 2*r);
+
+        super.draw(g);
     }
 }

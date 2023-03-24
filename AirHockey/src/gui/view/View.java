@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class View implements Drawable {
+public class View implements Drawable {
     protected List<Drawable> elements;
     private GameState state;
 

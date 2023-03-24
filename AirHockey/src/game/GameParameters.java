@@ -13,4 +13,7 @@ public class GameParameters {
     public static final Color CANVAS_COLOR = new Color(20, 50, 100);
     public static final Color TABLE_COLOR = new Color(20, 50, 100);
 
+    /** mallet size with respect to table vertical */
+    public static final float MALET_SIZE = 0.06f;
+
 }

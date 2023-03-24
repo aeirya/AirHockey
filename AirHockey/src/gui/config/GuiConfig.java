@@ -1,5 +1,6 @@
 package gui.config;
 
+import game.GameParameters;
 import model.Vector;
 
 import java.awt.*;
@@ -40,5 +41,9 @@ public class GuiConfig {
 
     public static Vector getWindowCenter() {
         return new Vector(getWindowWidth()/2, getWindowHeight()/2);
+    }
+
+    public static int getMalletRadius() {
+        return (int) (GameParameters.MALET_SIZE * getWindowDimension().getHeight());
     }
 }

@@ -1,4 +1,7 @@
-package model;
+package model.geometric;
+
+import model.GameObject;
+import model.Vector;
 
 /** Circular game object */
 public class Circle extends GameObject {
@@ -6,10 +9,10 @@ public class Circle extends GameObject {
     
     protected Circle(Vector position, Vector velocity, int radius) {
         super(position, velocity);
-        this.radius= radius;
+        this.radius = radius;
     }
 
-    protected Circle(Vector position, int radius) {
+    public Circle(Vector position, int radius) {
         this(position, new Vector(0, 0), radius);
     }
     

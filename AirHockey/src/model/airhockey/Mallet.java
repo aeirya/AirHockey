@@ -1,6 +1,6 @@
 package model.airhockey;
 
-import model.Circle;
+import model.geometric.Circle;
 import model.Vector;
 
 public class Mallet extends Circle {

@@ -35,7 +35,8 @@ public class TableView extends View {
 
         add(new PuckView());
         addWalls(state.getWalls());
-
+        add(new MalletView(state.getPlayer1()));
+        add(new MalletView(state.getPlayer2()));
         super.update(state);
     }
 

@@ -1,7 +1,6 @@
 package gui.view;
 
 import logic.GameState;
-import model.Circle;
 
 import java.awt.*;
 

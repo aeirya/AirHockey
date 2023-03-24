@@ -7,6 +7,7 @@ import game.IGame;
 import gui.Window;
 import gui.config.GuiConfig;
 import model.Player;
+import model.Vector;
 import model.airhockey.Table;
 
 
@@ -26,8 +27,10 @@ public class Game implements IGame {
                 GuiConfig.getWindowCenter());
         state = new GameState();
         time = 0;
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player(0);
+        player2 = new Player(1);
+        player1.setPosition(new Vector(300, 300));
+        player2.setPosition(new Vector(900, 300));
 
         eventHandler = new DummyEventHandler();
         window = new Window(this);
