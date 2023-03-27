@@ -1,7 +1,9 @@
 package model.airhockey.wall;
 
-import model.GameObject;
+import model.airhockey.Puck;
+import model.gameobject.GameObject;
 import model.Vector;
+import model.gameobject.MovableGameObject;
 
 public class HorizontalWall extends Wall {
     public HorizontalWall(Vector position, int length) {
@@ -9,9 +11,9 @@ public class HorizontalWall extends Wall {
     }
 
     @Override
-    protected void bounce(GameObject puck) {
-        Vector v = puck.getVelocity();
-        puck.setVelocity(v.getX(), -v.getY());
+    protected void bounce(MovableGameObject go) {
+        Vector v = go.getVelocity();
+        go.setVelocity(v.getX(), -v.getY());
     }
 
     @Override

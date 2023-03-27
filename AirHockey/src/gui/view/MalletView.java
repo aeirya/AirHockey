@@ -20,6 +20,6 @@ public class MalletView extends TwoCircleView {
     @Override
     public void update(GameState state) {
         super.update(state);
-        update(player);
+        update(player.getMallet());
     }
 }

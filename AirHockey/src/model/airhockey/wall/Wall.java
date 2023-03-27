@@ -1,8 +1,10 @@
 package model.airhockey.wall;
 
-import model.GameObject;
+import model.gameobject.GameObject;
 import model.Vector;
 import model.airhockey.Puck;
+import model.gameobject.MovableGameObject;
+import model.geometric.Circle;
 
 public abstract class Wall extends GameObject {
     private final int length;
@@ -15,13 +17,13 @@ public abstract class Wall extends GameObject {
     }
 
     @Override
-    public void onColide(GameObject go) {
-        if (go instanceof Puck) {
-            bounce(go);
+    public void onCollide(GameObject go) {
+        if (go instanceof MovableGameObject) {
+            bounce((MovableGameObject) go);
         }
     }
 
-    protected abstract void bounce(GameObject other);
+    protected abstract void bounce(MovableGameObject other);
 
     public abstract long dist(GameObject other);
 
@@ -35,7 +37,15 @@ public abstract class Wall extends GameObject {
 
     public abstract Vector getEndPoint();
 
-    public boolean intersects(Puck puck) {
-        return puck.intersects(this);
+    @Override
+    public boolean intersects(GameObject other) {
+        if (other instanceof Circle) {
+            return intersects((Circle) other);
+        }
+        return super.intersects(other);
+    }
+
+    public boolean intersects(Circle circle) {
+        return circle.intersects(this);
     }
 }

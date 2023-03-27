@@ -1,37 +1,56 @@
 package logic;
 
-import model.GameObject;
+import model.gameobject.GameObject;
 import model.airhockey.Puck;
-import model.airhockey.wall.Wall;
+import model.gameobject.MovableGameObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CollisionDetector {
-    private Puck puck;
-    private List<GameObject> otherObjects;
+    private List<GameObject> dynamicObjects;
+    private List<GameObject> staticObjects;
+    private CollisionMap collisionMap;
 
     public CollisionDetector(Puck puck) {
-        this.puck = puck;
-        otherObjects = new ArrayList<>();
+        collisionMap = new CollisionMap();
+        staticObjects = new ArrayList<>();
+        dynamicObjects = new ArrayList<>();
+        add(puck);
     }
 
     public void add(GameObject go) {
-        otherObjects.add(go);
+        if (go instanceof MovableGameObject) {
+            dynamicObjects.add(go);
+        } else {
+            staticObjects.add(go);
+        }
     }
 
     public void checkForBallCollisions() {
-        for (GameObject go : otherObjects) {
-            if (go instanceof Wall) checkWall((Wall) go);
-            else if (go.intersects(puck)) {
-                System.out.println("an intersection!");
-                go.onColide(puck);
+        for (GameObject dynamic : dynamicObjects) {
+            for (GameObject go : staticObjects) {
+                checkIntersection(go, dynamic);
+            }
+            for (GameObject go : dynamicObjects) {
+                if (go == dynamic) continue;
+                checkIntersection(go, dynamic);
             }
         }
     }
 
-    private void checkWall(Wall wall) {
-        if (wall.intersects(puck)) wall.onColide(puck);
+    private void checkIntersection(GameObject go, GameObject other) {
+        boolean intersects = go.intersects(other);
+        if (!collisionMap.isCollided(go, other) && intersects) {
+            go.onCollide(other);
+            other.onCollide(go);
+            collisionMap.collide(go, other);
+        }
+        if (collisionMap.isCollided(go, other) && !intersects) {
+            go.onExit(other);
+            other.onExit(go);
+            collisionMap.exit(go, other);
+        }
     }
-
 }

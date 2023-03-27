@@ -2,15 +2,17 @@ package model;
 
 import game.GameParameters;
 import gui.config.GuiConfig;
+import model.airhockey.Mallet;
 import model.geometric.Circle;
 
-public class Player extends Circle {
+public class Player {
     int id;
     int score;
     ActivePowerup powerup;
+    Mallet mallet;
 
     public Player(int id) {
-        super(new Vector(0, 0), GuiConfig.getMalletRadius());
+        mallet = new Mallet(new Vector(0, 0), GuiConfig.getMalletRadius());
         this.id = id;
         score = 0;
         powerup = null;
@@ -18,5 +20,9 @@ public class Player extends Circle {
 
     public int getID() {
         return id;
+    }
+
+    public Mallet getMallet() {
+        return mallet;
     }
 }

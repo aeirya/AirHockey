@@ -1,7 +1,8 @@
 package model.airhockey.wall;
 
-import model.GameObject;
+import model.gameobject.GameObject;
 import model.Vector;
+import model.gameobject.MovableGameObject;
 
 public class VerticalWall extends Wall {
     public VerticalWall(Vector position, int length) {
@@ -9,7 +10,7 @@ public class VerticalWall extends Wall {
     }
 
     @Override
-    protected void bounce(GameObject puck) {
+    protected void bounce(MovableGameObject puck) {
         Vector v = puck.getVelocity();
         puck.setVelocity(-v.getX(), v.getY());
     }

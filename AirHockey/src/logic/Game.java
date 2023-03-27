@@ -24,15 +24,19 @@ public class Game implements IGame {
     private Window window;
 
     public Game() {
-        table = new Table(
-                GuiConfig.getWindowDimension(),
-                GuiConfig.getWindowCenter());
-        state = new GameState();
-        time = 0;
         player1 = new Player(0);
         player2 = new Player(1);
-        player1.setPosition(new Vector(300, 300));
-        player2.setPosition(new Vector(900, 300));
+        player2.getMallet().setPosition(new Vector(900, 300));
+        player1.getMallet().setPosition(new Vector(300, 300));
+
+        table = new Table(
+                GuiConfig.getWindowDimension(),
+                GuiConfig.getWindowCenter(),
+                player1.getMallet(),
+                player2.getMallet());
+        state = new GameState();
+        time = 0;
+
 
         eventHandler = new EventHandler();
         window = new Window(this);
@@ -52,7 +56,7 @@ public class Game implements IGame {
     public void movePlayer(PlayerMoveAction action) {
         Player player = player2;
         if (action.playerID == 0) player = player1;
-        player.move(action.dx * 1, action.dy * 1);
+        player.getMallet().move(action.dx * 1, action.dy * 1);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package logic;
 
 import model.Player;
+import model.airhockey.Mallet;
 import model.airhockey.Puck;
 import model.airhockey.Table;
 import model.airhockey.wall.Wall;
@@ -12,6 +13,8 @@ public class GameState {
     /** left and right players */
     private Player player1;
     private Player player2;
+
+    private List<Mallet> mallets;
 
     /** time in seconds */
     private int time;
@@ -61,6 +64,15 @@ public class GameState {
 
     public Player getPlayer2() {
         return player2;
+    }
+
+    public List<Mallet> getMallets() {
+        return mallets;
+    }
+
+    public GameState setMallets(List<Mallet> mallets) {
+        this.mallets = mallets;
+        return this;
     }
 
     public int getTime() {

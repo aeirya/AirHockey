@@ -21,8 +21,8 @@ public class GameLoopThread extends LoopThread {
     protected void runOnce() {
         double dt = (double)getDeltaTime()/1000;
         dt = dt * gameSpeed;
-        table.passTime(dt);
         table.checkCollisions();
+        table.passTime(dt);
     }
 
     private int getDeltaTime() {

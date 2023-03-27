@@ -19,7 +19,7 @@ public class Vector {
 
     /** Squared euclidean distance of two vectors */
     public int dist2(Vector other) {
-        return (x - other.x)^2 + (y - other.y)^2;
+        return (int) (Math.pow(x - other.x, 2) + Math.pow(y - other.y,2));
     }
 
     public Vector add(Vector other) {
@@ -30,7 +30,7 @@ public class Vector {
         return new Vector(x + dx, y + dy);
     }
 
-    public Vector mult(int a) {
+    public Vector multi(int a) {
         return new Vector(x*a, y*a);
     }
 
@@ -41,4 +41,6 @@ public class Vector {
                 ", y=" + y +
                 '}';
     }
+
+    public static Vector ZERO = new Vector(0, 0);
 }
