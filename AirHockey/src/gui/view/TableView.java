@@ -5,6 +5,7 @@ import logic.GameState;
 import model.Goal;
 import model.Vector;
 import model.airhockey.Table;
+import model.airhockey.wall.MidtableLine;
 import model.airhockey.wall.Wall;
 
 import java.awt.*;
@@ -52,7 +53,11 @@ public class TableView extends View {
     private void addWalls(List<Wall> wallModels) {
 //        walls.clear();
         for (Wall wall : wallModels) {
-            add(new WallView(wall));
+            if (wall instanceof MidtableLine) {
+                add(new WallView(wall));
+            } else {
+                add(new WallView(wall));
+            }
         }
     }
 

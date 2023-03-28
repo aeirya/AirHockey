@@ -3,10 +3,13 @@ package model.gameobject;
 import model.Dimension;
 import model.Vector;
 
+import java.awt.*;
+
 // TODO: use vector values between zero and one and scale them to screen size
 public class GameObject {
     private Vector position; //up left
     private Vector size;
+    private Color color;
 
     protected GameObject(Vector position) {
         this.position = position;
@@ -59,5 +62,14 @@ public class GameObject {
 
     public int getY() {
         return getPosition().getY();
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public GameObject setColor(Color color) {
+        this.color = color;
+        return this;
     }
 }

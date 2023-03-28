@@ -24,7 +24,11 @@ public class WallView extends View {
 
         Stroke oldStroke = g.getStroke();
         g.setStroke(new BasicStroke(wall.getWidth()));
-        g.setColor(Color.RED);
+        if (wall.getColor() != null) {
+            g.setColor(wall.getColor());
+        } else {
+            g.setColor(Color.RED);
+        }
         g.drawLine(start.getX(), start.getY(), end.getX(), end.getY());
         g.setColor(Color.GREEN);
         drawBullet(g, start);

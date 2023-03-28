@@ -8,7 +8,7 @@ import model.geometric.Circle;
 
 public abstract class Wall extends GameObject {
     private final int length;
-    private final int width;
+    private int width;
 
     protected Wall(Vector position, int length) {
         super(position);
@@ -47,5 +47,10 @@ public abstract class Wall extends GameObject {
 
     public boolean intersects(Circle circle) {
         return circle.intersects(this);
+    }
+
+    public Wall setWidth(int width) {
+        this.width = width;
+        return this;
     }
 }
