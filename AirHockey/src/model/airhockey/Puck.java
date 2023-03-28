@@ -19,6 +19,14 @@ public class Puck extends Circle {
     }
 
     private void onCollide(Mallet mallet) {
-        setVelocity(getVelocity().multi(-1));
+//        setVelocity(getVelocity().multi(-1));
+        bounce(mallet);
+    }
+
+    private void bounce(Mallet mallet) {
+        Vector malletToPuck = getPosition().sub(mallet.getPosition());
+        Vector projection = mallet.getVelocity().project(malletToPuck);
+        Vector normal = mallet.getVelocity().sub(projection);
+        mallet.setVelocity(projection.negate().add(normal));
     }
 }
