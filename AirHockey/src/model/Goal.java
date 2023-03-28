@@ -1,4 +1,9 @@
 package model;
 
-public class Goal {
+import model.gameobject.GameObject;
+
+public class Goal extends GameObject {
+    public Goal(Vector position, Vector size) {
+        super(position, size);
+    }
 }

@@ -1,5 +1,6 @@
 package logic;
 
+import model.Goal;
 import model.Player;
 import model.airhockey.Mallet;
 import model.airhockey.Puck;
@@ -24,6 +25,8 @@ public class GameState {
     public Table table;
 
     private List<Wall> walls;
+
+    private List<Goal> goals;
 
     public Puck getPuck() {
         return puck;
@@ -85,5 +88,14 @@ public class GameState {
 
     public void setWalls(List<Wall> walls) {
         this.walls = walls;
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public GameState setGoals(List<Goal> goals) {
+        this.goals = goals;
+        return this;
     }
 }

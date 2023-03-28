@@ -3,6 +3,7 @@ package model.airhockey;
 import gui.config.GuiConfig;
 import logic.CollisionDetector;
 import logic.GameState;
+import model.Goal;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.airhockey.wall.HorizontalWall;
@@ -22,11 +23,13 @@ public class Table {
     private List<GameObject> objects;
     private List<Mallet> mallets;
     private CollisionDetector collisionDetector;
+    private List<Goal> goals;
 
     public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2) {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
         mallets = new ArrayList<>();
+        goals = new ArrayList<>();
 
         puck = new Puck(center, new Vector(-300, -300), 25);
         collisionDetector = new CollisionDetector(puck);
@@ -34,11 +37,19 @@ public class Table {
         this.dimension = dimension;
         this.center = center;
 
+        Vector leftWallCenter = center.add(-dimension.width/2, 0);
+        Vector rightWallCenter = center.add(+dimension.width/2, 0);
+
+        Vector goalSize = new Vector(dimension.height/2, dimension.height/2);
+
         add(new HorizontalWall(center.add(0, -dimension.height/2), dimension.width));
         add(new HorizontalWall(center.add(0, +dimension.height/2), dimension.width));
-        add(new VerticalWall(center.add(-dimension.width/2, 0), dimension.height));
-        add(new VerticalWall(center.add(+dimension.width/2, 0), dimension.height));
-
+        add(new VerticalWall(leftWallCenter, dimension.height));
+        add(new VerticalWall(rightWallCenter, dimension.height));
+//        add(new Goal(leftWallCenter.add(goalSize.getX()/2, 0), goalSize));
+//        add(new Goal(rightWallCenter.add(-goalSize.getX()/2, 0), goalSize));
+        add(new Goal(leftWallCenter, goalSize));
+        add(new Goal(rightWallCenter, goalSize));
         add(p1);
         add(p2);
 //        add(new Mallet(center.add(-dimension.width/3, 0), GuiConfig.getMalletRadius(), 0));
@@ -52,6 +63,9 @@ public class Table {
         }
         if (go instanceof Mallet) {
             mallets.add((Mallet) go);
+        }
+        if (go instanceof Goal) {
+            goals.add((Goal) go);
         }
     }
 
@@ -80,6 +94,7 @@ public class Table {
         state.setPuck(puck);
         state.setWalls(walls);
         state.setMallets(mallets);
+        state.setGoals(goals);
         return state;
     }
 }

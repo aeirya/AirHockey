@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 public class Vector {
     private int x;
     private int y;
@@ -7,6 +9,10 @@ public class Vector {
     public Vector(int x , int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Vector(Dimension dimension) {
+        this(dimension.width, dimension.height);
     }
 
     public int getX() {
@@ -32,6 +38,13 @@ public class Vector {
 
     public Vector multi(int a) {
         return new Vector(x*a, y*a);
+    }
+    public Vector div(int a) {
+        return new Vector(x/a, y/a);
+    }
+
+    public Vector multi(double a) {
+        return new Vector((int) (x*a), (int) (y*a));
     }
 
     @Override

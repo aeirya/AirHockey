@@ -2,6 +2,7 @@ package gui.view;
 
 import game.GameParameters;
 import logic.GameState;
+import model.Goal;
 import model.Vector;
 import model.airhockey.Table;
 import model.airhockey.wall.Wall;
@@ -37,6 +38,7 @@ public class TableView extends View {
         addWalls(state.getWalls());
         add(new MalletView(state.getPlayer1()));
         add(new MalletView(state.getPlayer2()));
+        addGoals(state.getGoals());
         super.update(state);
     }
 
@@ -51,6 +53,13 @@ public class TableView extends View {
 //        walls.clear();
         for (Wall wall : wallModels) {
             add(new WallView(wall));
+        }
+    }
+
+    private void addGoals(List<Goal> goals) {
+        int i = 0;
+        for (Goal goal : goals) {
+            add(new GoalView(i++));
         }
     }
 

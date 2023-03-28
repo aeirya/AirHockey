@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 public class CollisionMap {
-    private int lastIndex;
+//    private int lastIndex;
 //    private Map<GameObject, Integer> map;
     private Map<GameObject, List<GameObject>> collisions;
 
     public CollisionMap() {
 //        map = new HashMap<>();
         collisions = new HashMap<>();
-        lastIndex = 0;
+//        lastIndex = 0;
     }
 //
 //    public void add(GameObject go) {
