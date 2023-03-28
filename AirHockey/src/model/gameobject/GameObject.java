@@ -1,5 +1,6 @@
 package model.gameobject;
 
+import model.Dimension;
 import model.Vector;
 
 // TODO: use vector values between zero and one and scale them to screen size
@@ -32,7 +33,31 @@ public class GameObject {
         return false;
     }
 
-    public Vector getSize() {
-        return size;
+    public Dimension getSize() {
+        return new Dimension(size);
+    }
+
+    public Vector getTopLeft() {
+        return getPosition().add(-getSize().getX()/2, -getSize().getY()/2);
+    }
+
+    public Vector getBottomRight() {
+        return getPosition().add(+getSize().getX()/2, +getSize().getY()/2);
+    }
+
+    public int getWidth() {
+        return getSize().getWidth();
+    }
+
+    public int getHeight() {
+        return getSize().getHeight();
+    }
+
+    public int getX() {
+        return getPosition().getX();
+    }
+
+    public int getY() {
+        return getPosition().getY();
     }
 }
