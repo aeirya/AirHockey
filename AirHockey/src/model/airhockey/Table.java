@@ -10,6 +10,7 @@ import model.Vector;
 import model.airhockey.wall.HorizontalWall;
 import model.airhockey.wall.VerticalWall;
 import model.airhockey.wall.Wall;
+import model.geometric.Circle;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -99,5 +100,9 @@ public class Table {
         state.setMallets(mallets);
         state.setGoals(goals);
         return state;
+    }
+
+    public boolean intersectsCenterLine(Circle circle) {
+        return Math.abs(circle.getX() - center.getX()) < circle.getRadius();
     }
 }

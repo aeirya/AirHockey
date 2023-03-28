@@ -11,7 +11,7 @@ public class GameLoopThread extends LoopThread {
 
     // TODO: replace this dependency injection
     public GameLoopThread(Table table) {
-        super(1000/GameParameters.FPS/2);
+        super(GameParameters.GAME_REFRESH_INTERVAL);
         this.table = table;
         lastTime = -1;
     }

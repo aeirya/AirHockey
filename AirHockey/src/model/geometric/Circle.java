@@ -9,7 +9,7 @@ import util.Math;
 /** Circular game object */
 public class Circle extends MovableGameObject {
     private final int radius;
-    
+
     protected Circle(Vector position, Vector velocity, int radius) {
         super(position, velocity);
         this.radius = radius;
@@ -17,6 +17,10 @@ public class Circle extends MovableGameObject {
 
     public Circle(Vector position, int radius) {
         this(position, new Vector(0, 0), radius);
+    }
+
+    public Circle(Circle circle) {
+        this(circle.getPosition(), circle.getVelocity(), circle.getRadius());
     }
     
     public int getRadius() {

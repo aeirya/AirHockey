@@ -11,6 +11,7 @@ import gui.event.PlayerMoveAction;
 import model.Player;
 import model.Vector;
 import model.airhockey.Table;
+import model.geometric.Circle;
 
 
 public class Game implements IGame {
@@ -56,7 +57,12 @@ public class Game implements IGame {
     public void movePlayer(PlayerMoveAction action) {
         Player player = player2;
         if (action.playerID == 0) player = player1;
-        player.getMallet().move(action.dx * 1, action.dy * 1);
+
+        Circle circle = new Circle(player.getMallet());
+        circle.move(action.dx, action.dy);
+        if (!table.intersectsCenterLine(circle)) {
+            player.getMallet().move(action.dx * 1, action.dy * 1);
+        };
     }
 
     @Override
