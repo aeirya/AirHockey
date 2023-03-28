@@ -12,7 +12,7 @@ public class MovableGameObject extends GameObject {
     }
 
     public MovableGameObject(Vector position) {
-        this(position, Vector.ZERO);
+        this(position, Vector.getZero());
     }
 
     public Vector getVelocity() {

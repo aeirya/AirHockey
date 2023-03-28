@@ -61,28 +61,34 @@ public class Vector {
     }
 
     public Vector direction() {
-        int size = getSize();
-        return new Vector(x/size, y/size);
+        double size = getSize();
+        if (size == 0)
+            return getZero();
+        return new Vector((int)(x/size), (int)(y/size));
     }
 
-    public int getSize() {
-        return (int) Math.sqrt(Math.pow(getX(),2) + Math.pow(getY(), 2));
+    public double getSize() {
+        return Math.sqrt(dist2(ZERO));
     }
 
     public int dot(Vector v) {
-        return getX() * v.getX() + getY() * v.getY();
+        return x * v.getX() + y * v.getY();
     }
 
     /**
      * @return the projection of this onto "other" vector
      */
     public Vector project(Vector other) {
-        return other.direction().multi(dot(other));
+        return other.multi(dot(other)).div(other.dist2(ZERO));
     }
 
     public Vector negate() {
         return this.multi(-1);
     }
 
-    public static Vector ZERO = new Vector(0, 0);
+    public static Vector getZero(){
+        return new Vector(0 , 0);
+    }
+
+    public final static Vector ZERO = new Vector(0, 0);
 }

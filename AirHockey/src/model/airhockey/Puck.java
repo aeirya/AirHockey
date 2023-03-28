@@ -25,8 +25,8 @@ public class Puck extends Circle {
 
     private void bounce(Mallet mallet) {
         Vector malletToPuck = getPosition().sub(mallet.getPosition());
-        Vector projection = mallet.getVelocity().project(malletToPuck);
-        Vector normal = mallet.getVelocity().sub(projection);
-        mallet.setVelocity(projection.negate().add(normal));
+        Vector projection = getVelocity().project(malletToPuck);
+        Vector normal = getVelocity().sub(projection);
+        setVelocity(projection.negate().add(normal));
     }
 }
