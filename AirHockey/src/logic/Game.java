@@ -22,7 +22,6 @@ public class Game implements IGame {
     private Player player2;
 
     private IEventHandler eventHandler;
-    private Window window;
 
     public Game() {
         player1 = new Player(0);
@@ -40,9 +39,6 @@ public class Game implements IGame {
 
 
         eventHandler = new EventHandler();
-        window = new Window(this);
-        window.loop();
-        loop();
     }
 
     public GameState exportState() {

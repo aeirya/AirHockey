@@ -1,7 +1,11 @@
+import gui.Window;
 import logic.Game;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        new Game();
+        Game game = new Game();
+        Window window = new Window(game);
+        window.loop();
+        game.loop();
     }
 }
