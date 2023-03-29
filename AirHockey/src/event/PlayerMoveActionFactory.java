@@ -11,13 +11,21 @@ public class PlayerMoveActionFactory {
         List<Character> playerKeys = getKeys(playerID);
         int dx = 0;
         int dy = 0;
+        boolean isHaste = false;
+
         for (Character key: playerKeys) {
             if (keyPressed.getOrDefault(key, false)) {
+                if (Character.isUpperCase(key)) {
+                    isHaste = true;
+                } else {
+                    key = Character.toUpperCase(key);
+                }
                 dx += getDX(key);
                 dy += getDY(key);
+
             }
         }
-        return new PlayerMoveAction(playerID, dx, dy);
+        return new PlayerMoveAction(playerID, dx, dy, isHaste);
     }
 
 //    private int charToDelta(char key) {

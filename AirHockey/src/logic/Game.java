@@ -57,13 +57,13 @@ public class Game implements IGame, IGameEventHandler {
         Player player = player2;
         if (action.playerID == 0) player = player1;
 
-        if (! action.isNonzero()) {
+        if (!action.isNonzero()) {
             player.getMallet().setVelocity(Vector.ZERO);
             return;
         }
 
         Circle circle = new Circle(player.getMallet());
-        circle.move(action.dx, action.dy);
+        circle.move(action.getVector());
         if (!table.intersectsCenterLine(circle)) {
             player.getMallet().movePlayer(action);
         };

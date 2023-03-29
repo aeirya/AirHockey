@@ -31,6 +31,10 @@ public class MovableGameObject extends GameObject {
         setPosition(getPosition().add(dx, dy));
     }
 
+    public void move(Vector dx) {
+        setPosition(getPosition().add(dx));
+    }
+
     /** updates the location of ball to after moving dt seconds with constant velocity */
     public void move(double dt) {
         move((int)(getVelocity().getX()*dt), (int)(getVelocity().getY()*dt));

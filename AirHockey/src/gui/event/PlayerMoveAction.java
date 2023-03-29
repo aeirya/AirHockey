@@ -9,11 +9,13 @@ public class PlayerMoveAction implements IEvent {
     public final int playerID;
     public final int dx;
     public final int dy;
+    public final boolean isHaste;
 
-    public PlayerMoveAction(int playerID, int dx, int dy) {
+    public PlayerMoveAction(int playerID, int dx, int dy, boolean isHaste) {
         this.playerID = playerID;
         this.dx = dx;
         this.dy = dy;
+        this.isHaste = isHaste;
     }
 
     public boolean isNonzero() {
@@ -35,7 +37,9 @@ public class PlayerMoveAction implements IEvent {
     }
 
     public Vector getVector() {
-        return new Vector(dx, dy);
+        int m = 1;
+        if (isHaste) m = 2;
+        return new Vector(m*dx, m*dy);
     }
 }
 

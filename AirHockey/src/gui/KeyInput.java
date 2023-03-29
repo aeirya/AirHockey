@@ -21,7 +21,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     private char getKey(KeyEvent e) {
-        return Character.toUpperCase(e.getKeyChar());
+        return e.getKeyChar();
     }
 
     @Override
