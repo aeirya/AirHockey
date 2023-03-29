@@ -55,6 +55,10 @@ public class TableView extends View {
         });
         add(new MalletView(state.getPlayer1()));
         add(new MalletView(state.getPlayer2()));
+
+        add(new ScoreView(state.getPlayer1()));
+        add(new ScoreView(state.getPlayer2()));
+
         addGoals(state.getGoals());
         super.update(state);
     }

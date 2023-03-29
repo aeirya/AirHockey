@@ -1,9 +1,7 @@
 package model;
 
-import game.GameParameters;
 import gui.config.GuiConfig;
 import model.airhockey.Mallet;
-import model.geometric.Circle;
 
 public class Player {
     int id;
@@ -20,6 +18,14 @@ public class Player {
 
     public int getID() {
         return id;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public ActivePowerup getPowerup() {
+        return powerup;
     }
 
     public Mallet getMallet() {
