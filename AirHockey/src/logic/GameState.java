@@ -2,6 +2,7 @@ package logic;
 
 import model.Goal;
 import model.Player;
+import model.PowerUp;
 import model.airhockey.Mallet;
 import model.airhockey.Puck;
 import model.airhockey.Table;
@@ -35,6 +36,8 @@ public class GameState {
     public Table getTable() {
         return table;
     }
+
+    private PowerUp powerup;
 
     public GameState setPlayer1(Player player1) {
         this.player1 = player1;
@@ -97,5 +100,13 @@ public class GameState {
     public GameState setGoals(List<Goal> goals) {
         this.goals = goals;
         return this;
+    }
+
+    public void setPowerup(PowerUp powerup) {
+        this.powerup = powerup;
+    }
+
+    public PowerUp getPowerup() {
+        return powerup;
     }
 }

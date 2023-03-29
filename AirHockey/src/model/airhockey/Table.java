@@ -4,6 +4,7 @@ import gui.config.GuiConfig;
 import logic.CollisionDetector;
 import logic.GameState;
 import model.Goal;
+import model.PowerUp;
 import model.airhockey.wall.MidtableLine;
 import model.gameobject.GameObject;
 import model.Vector;
@@ -27,13 +28,13 @@ public class Table {
     private CollisionDetector collisionDetector;
     private List<Goal> goals;
 
-    public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2) {
+    public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power) {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
         mallets = new ArrayList<>();
         goals = new ArrayList<>();
 
-        puck = new Puck(center, new Vector(-300, -300), 25);
+        puck = new Puck(center, new Vector(-1, -1));
         collisionDetector = new CollisionDetector(puck);
 
         this.dimension = dimension;
@@ -56,6 +57,7 @@ public class Table {
         add(new Goal(rightWallCenter, goalSize));
         add(p1);
         add(p2);
+        add(power);
 //        add(new Mallet(center.add(-dimension.width/3, 0), GuiConfig.getMalletRadius(), 0));
 //        add(new Mallet(center.add(+dimension.width/3, 0), GuiConfig.getMalletRadius(), 1));
     }
@@ -79,6 +81,9 @@ public class Table {
      */
     public void passTime(double dt) {
         puck.move(dt);
+        for (Mallet mallet : mallets) {
+            mallet.move(dt);
+        }
     }
 
     public void checkCollisions() {

@@ -60,11 +60,12 @@ public class Vector {
                 '}';
     }
 
-    public Vector direction() {
+    /* returns scale * v.direction */
+    public Vector direction(double scale) {
         double size = getSize();
         if (size == 0)
             return getZero();
-        return new Vector((int)(x/size), (int)(y/size));
+        return new Vector((int)(x*scale/size), (int)(y*scale/size));
     }
 
     public double getSize() {
@@ -91,4 +92,6 @@ public class Vector {
     }
 
     public final static Vector ZERO = new Vector(0, 0);
+    public final static Vector ONES = new Vector(1, 1);
+
 }

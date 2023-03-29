@@ -21,7 +21,7 @@ public class CollisionDetector {
     }
 
     public void add(GameObject go) {
-        if (go instanceof MovableGameObject) {
+        if (go.isMobile()) {
             dynamicObjects.add(go);
         } else {
             staticObjects.add(go);

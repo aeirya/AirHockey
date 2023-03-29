@@ -4,6 +4,7 @@ import model.Vector;
 import model.gameobject.GameObject;
 
 public class Rectangle extends GameObject {
+
     public Rectangle(Vector position) {
         super(position);
     }

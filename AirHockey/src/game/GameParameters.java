@@ -16,5 +16,8 @@ public class GameParameters {
 
     /** mallet size with respect to table vertical */
     public static final float MALET_SIZE = 0.06f;
+    public static final float MALLET_MAX_SPEED = 0.7f;
+
+    public static final float PUCK_SIZE = 0.04f;
 
 }

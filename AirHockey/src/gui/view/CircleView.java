@@ -33,6 +33,9 @@ public class CircleView extends View {
         x = circle.getPosition().getX();
         y = circle.getPosition().getY();
         radius = circle.getRadius();
+        if (circle.getColor() != null) {
+            color = circle.getColor();
+        }
     }
 
     protected int getRadius() {

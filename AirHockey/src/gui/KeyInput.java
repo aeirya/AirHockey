@@ -43,8 +43,8 @@ public class KeyInput extends KeyAdapter {
 
     private void pushPlayerEvent(int playerID) {
         PlayerMoveAction action = moveFactory.build(pressedKeys, playerID);
-        if (action.isNonzero()) {
+//        if (action.isNonzero()) {
             eventHandler.handle(action);
-        }
+//        }
     }
 }

@@ -46,4 +46,10 @@ public class GuiConfig {
     public static int getMalletRadius() {
         return (int) (GameParameters.MALET_SIZE * getWindowDimension().getHeight());
     }
+
+    public static int getPuckRadius() {
+        return (int) (GameParameters.PUCK_SIZE * getWindowDimension().getHeight());
+    }
+
+
 }

@@ -6,6 +6,8 @@ import model.gameobject.GameObject;
 import model.gameobject.MovableGameObject;
 import util.Math;
 
+import java.awt.*;
+
 /** Circular game object */
 public class Circle extends MovableGameObject {
     private final int radius;
@@ -18,6 +20,12 @@ public class Circle extends MovableGameObject {
     public Circle(Vector position, int radius) {
         this(position, new Vector(0, 0), radius);
     }
+
+    public Circle(Vector position, int radius, Color color) {
+        this(position, radius);
+        setColor(color);
+    }
+
 
     public Circle(Circle circle) {
         this(circle.getPosition(), circle.getVelocity(), circle.getRadius());
@@ -40,11 +48,12 @@ public class Circle extends MovableGameObject {
 
     public boolean intersects(Circle other) {
         int radiiSum = this.getRadius() + other.getRadius();
-        int dist = getPosition().dist2(other.getPosition());
+        double dist = getPosition().dist2(other.getPosition());
         return (radiiSum*radiiSum) > dist;
     }
 
     public boolean intersects(Wall wall) {
         return wall.dist(this) + Math.EPSILON <= this.getRadius();
     }
+
 }
