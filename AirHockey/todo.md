@@ -1,0 +1,8 @@
+- [ ] Remove color field from GameObject
+- [ ] Refactor model package
+- [ ] Clear event package
+- [ ] Mallet stay in table
+- [ ] Collect util package objects
+- [ ] IGameEventHandler Interface (add score)
+- [ ] Animations
+- [ ] Player2 haste button
