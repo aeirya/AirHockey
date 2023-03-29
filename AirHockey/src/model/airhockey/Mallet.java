@@ -1,6 +1,8 @@
 package model.airhockey;
 
+import game.GameParameters;
 import gui.config.GuiConfig;
+import gui.event.PlayerMoveAction;
 import model.gameobject.GameObject;
 import model.geometric.Circle;
 import model.Vector;
@@ -29,12 +31,20 @@ public class Mallet extends Circle {
         if (other instanceof Puck) {
             onCollide((Puck) other);
         }
-        halt();
+//        halt();
 //        System.out.println("halting mallet");
     }
 
     @Override
     public void move(double dt) {
         super.move(dt);
+    }
+
+    public static int getMaxSpeed() {
+        return (int) (GameParameters.MALLET_MAX_SPEED * GuiConfig.getWindowHeight());
+    }
+
+    public void movePlayer(PlayerMoveAction action) {
+        setVelocity(action.getVector().multi(getMaxSpeed()));
     }
 }

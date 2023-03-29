@@ -40,7 +40,7 @@ public class Circle extends MovableGameObject {
 
     public boolean intersects(Circle other) {
         int radiiSum = this.getRadius() + other.getRadius();
-        int dist = getPosition().dist2(other.getPosition());
+        double dist = getPosition().dist2(other.getPosition());
         return (radiiSum*radiiSum) > dist;
     }
 

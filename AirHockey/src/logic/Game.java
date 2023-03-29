@@ -54,10 +54,15 @@ public class Game implements IGame {
         Player player = player2;
         if (action.playerID == 0) player = player1;
 
+        if (! action.isNonzero()) {
+            player.getMallet().setVelocity(Vector.ZERO);
+            return;
+        }
+
         Circle circle = new Circle(player.getMallet());
         circle.move(action.dx, action.dy);
         if (!table.intersectsCenterLine(circle)) {
-            player.getMallet().move(action.dx * 1, action.dy * 1);
+            player.getMallet().movePlayer(action);
         };
     }
 

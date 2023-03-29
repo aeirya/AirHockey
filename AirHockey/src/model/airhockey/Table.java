@@ -33,7 +33,7 @@ public class Table {
         mallets = new ArrayList<>();
         goals = new ArrayList<>();
 
-        puck = new Puck(center, new Vector(-300, -300), 25);
+        puck = new Puck(center, new Vector(-1, -1));
         collisionDetector = new CollisionDetector(puck);
 
         this.dimension = dimension;
@@ -79,6 +79,9 @@ public class Table {
      */
     public void passTime(double dt) {
         puck.move(dt);
+        for (Mallet mallet : mallets) {
+            mallet.move(dt);
+        }
     }
 
     public void checkCollisions() {

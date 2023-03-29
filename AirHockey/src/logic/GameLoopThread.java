@@ -19,8 +19,7 @@ public class GameLoopThread extends LoopThread {
     // NOTE: I feel a lot of spaghetti code here
     @Override
     protected void runOnce() {
-        double dt = (double)getDeltaTime()/1000;
-        dt = dt * gameSpeed;
+        double dt = (double)getDeltaTime()/1000 * gameSpeed;
         table.checkCollisions();
         table.passTime(dt);
     }

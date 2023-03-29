@@ -3,6 +3,7 @@ package gui.event;
 import event.IEvent;
 import event.IEventHandler;
 import game.IGame;
+import model.Vector;
 
 public class PlayerMoveAction implements IEvent {
     public final int playerID;
@@ -31,6 +32,10 @@ public class PlayerMoveAction implements IEvent {
                 ", dx=" + dx +
                 ", dy=" + dy +
                 '}';
+    }
+
+    public Vector getVector() {
+        return new Vector(dx, dy);
     }
 }
 
