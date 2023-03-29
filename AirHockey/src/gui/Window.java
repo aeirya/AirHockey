@@ -25,7 +25,8 @@ public class Window extends JFrame {
         setResizable(false);
         setSize(GuiConfig.getWindowWidth(), GuiConfig.getWindowHeight());
 
-        setMenu(MenuType.GAME_TABLE);
+        //setMenu(MenuType.GAME_TABLE);
+        setMenu(MenuType.START_MENU);
 
         setVisible(true);
         setLocationRelativeTo(null);
