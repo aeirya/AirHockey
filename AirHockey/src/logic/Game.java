@@ -1,26 +1,25 @@
 package logic;
 
-import event.DummyEventHandler;
 import event.EventHandler;
 import event.IEvent;
 import event.IEventHandler;
+import event.IGameEventHandler;
 import game.IGame;
-import gui.Window;
 import gui.config.GuiConfig;
 import gui.event.PlayerMoveAction;
-import model.Player;
-import model.Vector;
+import model.*;
 import model.airhockey.Table;
 import model.geometric.Circle;
 
 
-public class Game implements IGame {
+public class Game implements IGame, IGameEventHandler {
     private GameState state;
     private Table table;
     private int time;
     private Player player1;
     private Player player2;
-
+    private PowerUp powerup;
+    private ActivePowerup activePowerup;
     private IEventHandler eventHandler;
 
     public Game() {
@@ -29,15 +28,18 @@ public class Game implements IGame {
         player2.getMallet().setPosition(new Vector(900, 300));
         player1.getMallet().setPosition(new Vector(300, 300));
 
+        powerup = new FastBallPowerUp(GuiConfig.getWindowCenter().add(300, 0), this);
         table = new Table(
                 GuiConfig.getWindowDimension(),
                 GuiConfig.getWindowCenter(),
                 player1.getMallet(),
-                player2.getMallet());
+                player2.getMallet(),
+                powerup);
         state = new GameState();
         time = 0;
 
-
+//        powerup = null;
+        activePowerup = new ActivePowerup();
         eventHandler = new EventHandler();
     }
 
@@ -46,6 +48,7 @@ public class Game implements IGame {
         state.setTime(time);
         state.setPlayer1(player1);
         state.setPlayer2(player2);
+        state.setPowerup(powerup);
         return state;
     }
 
@@ -74,5 +77,10 @@ public class Game implements IGame {
 
     public void loop() {
         new GameLoopThread(table).start();
+    }
+
+    @Override
+    public void activatePowerup() {
+        activePowerup.set(powerup);
     }
 }

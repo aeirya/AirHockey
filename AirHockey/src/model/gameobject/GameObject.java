@@ -72,4 +72,8 @@ public class GameObject {
         this.color = color;
         return this;
     }
+
+    public boolean isMobile() {
+        return false;
+    }
 }

@@ -39,4 +39,9 @@ public class MovableGameObject extends GameObject {
     public void halt() {
         setVelocity(0, 0);
     }
+
+    @Override
+    public boolean isMobile() {
+        return true;
+    }
 }

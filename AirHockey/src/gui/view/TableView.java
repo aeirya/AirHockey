@@ -7,6 +7,7 @@ import model.Vector;
 import model.airhockey.Table;
 import model.airhockey.wall.MidtableLine;
 import model.airhockey.wall.Wall;
+import model.geometric.Circle;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -37,6 +38,21 @@ public class TableView extends View {
 
         add(new PuckView());
         addWalls(state.getWalls());
+        add(new CircleView() {
+            @Override
+            public void update(GameState state) {
+                if (state.getPowerup() != null) {
+                   this.update(state.getPowerup());
+                }
+            }
+
+            @Override
+            public void draw(Graphics2D g) {
+                if (state.getPowerup().isVisible()) {
+                    super.draw(g);
+                }
+            }
+        });
         add(new MalletView(state.getPlayer1()));
         add(new MalletView(state.getPlayer2()));
         addGoals(state.getGoals());
