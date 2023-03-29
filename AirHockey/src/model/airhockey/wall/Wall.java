@@ -25,6 +25,8 @@ public abstract class Wall extends GameObject {
 
     protected abstract void bounce(MovableGameObject other);
 
+    public abstract void pushAway(MovableGameObject go);
+
     public abstract long dist(GameObject other);
 
     public int getLength() {

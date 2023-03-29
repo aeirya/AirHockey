@@ -10,6 +10,9 @@ import gui.event.PlayerMoveAction;
 import model.*;
 import model.airhockey.Table;
 import model.geometric.Circle;
+import model.powerup.ActivePowerup;
+import model.powerup.impl.FastBallPowerUp;
+import model.powerup.PowerUp;
 
 
 public class Game implements IGame, IGameEventHandler {
@@ -65,7 +68,9 @@ public class Game implements IGame, IGameEventHandler {
         Circle circle = new Circle(player.getMallet());
         circle.move(action.getVector());
         if (!table.intersectsCenterLine(circle)) {
-            player.getMallet().movePlayer(action);
+//            if (!table.intersectsAny(player.getMallet())) {
+                player.getMallet().movePlayer(action);
+//            }
         };
     }
 

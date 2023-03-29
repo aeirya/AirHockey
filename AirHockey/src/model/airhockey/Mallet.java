@@ -3,16 +3,28 @@ package model.airhockey;
 import game.GameParameters;
 import gui.config.GuiConfig;
 import gui.event.PlayerMoveAction;
+import model.airhockey.wall.HorizontalWall;
+import model.airhockey.wall.VerticalWall;
+import model.airhockey.wall.Wall;
 import model.gameobject.GameObject;
 import model.geometric.Circle;
 import model.Vector;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Mallet extends Circle {
     private int playerID;
+
+    private Wall currentBarrier;
+    private boolean stayOnLeftOrTop;
+    private Timer exitTimer;
 
     public Mallet(Vector position, int radius, int playerID) {
         super(position, radius);
         this.playerID = playerID;
+        currentBarrier = null;
+        exitTimer = new Timer();
     }
 
     public Mallet(Vector position, int playerID) {
@@ -26,13 +38,71 @@ public class Mallet extends Circle {
 //        );
     }
 
+    private void onCollide(Wall wall) {
+        exitTimer.cancel();
+        currentBarrier = wall;
+        if (wall instanceof HorizontalWall) {
+            stayOnLeftOrTop = getY() < wall.getY();
+        }
+        if (wall instanceof VerticalWall) {
+            stayOnLeftOrTop = getX() < wall.getX();
+        }
+        wall.pushAway(this);
+    }
+
+    @Override
+    public void onExit(GameObject other) {
+        exitTimer.cancel();
+        if (other instanceof Wall) {
+            exitTimer = new Timer();
+            exitTimer.schedule(
+                    new TimerTask() {
+                        @Override
+                        public void run() {
+                            currentBarrier = null;
+                        }
+                    }, 1000
+            );
+        }
+        super.onExit(other);
+    }
+
     @Override
     public void onCollide(GameObject other) {
         if (other instanceof Puck) {
             onCollide((Puck) other);
         }
+        if (other instanceof Wall) {
+            onCollide((Wall) other);
+        }
 //        halt();
 //        System.out.println("halting mallet");
+    }
+
+    @Override
+    public void move(int dx, int dy) {
+        if (currentBarrier != null)  {
+            if (stayOnLeftOrTop) {
+                if (
+                        getX() + getRadius() + dx > currentBarrier.getX() ||
+                        getY() + getRadius() + dy > currentBarrier.getY()
+                ) return;
+            } else {
+                if (
+                        getX() - getRadius() + dx < currentBarrier.getX() ||
+                        getY() - getRadius() + dy < currentBarrier.getY()
+                ) return;
+            }
+//            if (currentBarrier instanceof VerticalWall) {
+//                int distX = getX() - currentBarrier.getX();
+//                if (distX * (distX + dx) < 0) return;
+//            }
+//            if (currentBarrier instanceof HorizontalWall) {
+//                int distY = getY() - currentBarrier.getY();
+//                if (distY * (distY + dy) < 0) return;
+//            }
+        }
+        super.move(dx, dy);
     }
 
     @Override

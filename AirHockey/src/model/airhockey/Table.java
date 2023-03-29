@@ -1,10 +1,9 @@
 package model.airhockey;
 
-import gui.config.GuiConfig;
 import logic.CollisionDetector;
 import logic.GameState;
 import model.Goal;
-import model.PowerUp;
+import model.powerup.PowerUp;
 import model.airhockey.wall.MidtableLine;
 import model.gameobject.GameObject;
 import model.Vector;
@@ -83,6 +82,12 @@ public class Table {
         puck.move(dt);
         for (Mallet mallet : mallets) {
             mallet.move(dt);
+//            if (collisionDetector.checkIntersections(mallet)) {
+//                mallet.move(-dt);
+//                if (collisionDetector.checkIntersections(mallet)) {
+//                    mallet.move(2*dt);
+//                }
+//            }
         }
     }
 
@@ -109,5 +114,9 @@ public class Table {
 
     public boolean intersectsCenterLine(Circle circle) {
         return Math.abs(circle.getX() - center.getX()) < circle.getRadius();
+    }
+
+    public boolean intersectsAny(GameObject go) {
+        return collisionDetector.intersectsAny(go);
     }
 }

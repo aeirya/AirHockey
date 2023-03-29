@@ -2,7 +2,7 @@ package logic;
 
 import model.Goal;
 import model.Player;
-import model.PowerUp;
+import model.powerup.PowerUp;
 import model.airhockey.Mallet;
 import model.airhockey.Puck;
 import model.airhockey.Table;

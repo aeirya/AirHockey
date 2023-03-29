@@ -1,9 +1,8 @@
 package model;
 
-import game.GameParameters;
 import gui.config.GuiConfig;
 import model.airhockey.Mallet;
-import model.geometric.Circle;
+import model.powerup.ActivePowerup;
 
 public class Player {
     int id;

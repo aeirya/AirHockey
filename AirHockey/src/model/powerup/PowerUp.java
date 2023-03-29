@@ -1,8 +1,9 @@
-package model;
+package model.powerup;
 
 import event.IGameEventHandler;
 import gui.config.GuiConfig;
 import logic.GameState;
+import model.Vector;
 import model.gameobject.GameObject;
 import model.geometric.Circle;
 

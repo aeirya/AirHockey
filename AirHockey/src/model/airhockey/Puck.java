@@ -40,7 +40,7 @@ public class Puck extends Circle {
 
     private void onCollide(Mallet mallet) {
 //        setVelocity(getVelocity().multi(-1));
-        bounce(mallet);
+        bounceOff(mallet);
         exitModeTimer.cancel();
         exitMode = true;
     }
@@ -97,7 +97,7 @@ public class Puck extends Circle {
         return getMaxSpeed()/5*3;
     }
 
-    private void bounce(Mallet mallet) {
+    private void bounceOff(Mallet mallet) {
         Vector malletToPuck = getPosition().sub(mallet.getPosition());
         Vector malletProject = mallet.getVelocity().project(malletToPuck).multi(0.9);
         // only push

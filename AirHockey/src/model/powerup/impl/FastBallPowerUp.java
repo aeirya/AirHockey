@@ -1,8 +1,9 @@
-package model;
+package model.powerup.impl;
 
 import event.IGameEventHandler;
 import logic.GameState;
-import model.gameobject.GameObject;
+import model.Vector;
+import model.powerup.PowerUp;
 
 import java.awt.*;
 

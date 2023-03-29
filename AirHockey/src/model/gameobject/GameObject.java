@@ -28,6 +28,15 @@ public class GameObject {
         this.position = position;
     }
 
+    public void setPosition(int x, int y) {
+        setPosition(new Vector(x, y));
+    }
+
+    public GameObject setSize(Vector size) {
+        this.size = size;
+        return this;
+    }
+
     public void onCollide(GameObject other) {}
 
     public void onExit(GameObject other) {}

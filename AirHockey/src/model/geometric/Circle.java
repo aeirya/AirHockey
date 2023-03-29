@@ -4,7 +4,7 @@ import model.Vector;
 import model.airhockey.wall.Wall;
 import model.gameobject.GameObject;
 import model.gameobject.MovableGameObject;
-import util.Math;
+import util.MathConst;
 
 import java.awt.*;
 
@@ -15,6 +15,7 @@ public class Circle extends MovableGameObject {
     protected Circle(Vector position, Vector velocity, int radius) {
         super(position, velocity);
         this.radius = radius;
+        setSize(new Vector(2*radius, 2*radius));
     }
 
     public Circle(Vector position, int radius) {
@@ -53,7 +54,7 @@ public class Circle extends MovableGameObject {
     }
 
     public boolean intersects(Wall wall) {
-        return wall.dist(this) + Math.EPSILON <= this.getRadius();
+        return wall.dist(this) + MathConst.EPSILON <= this.getRadius();
     }
 
 }

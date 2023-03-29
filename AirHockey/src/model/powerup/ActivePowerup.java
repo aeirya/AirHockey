@@ -1,4 +1,4 @@
-package model;
+package model.powerup;
 
 import logic.GameState;
 
