@@ -21,6 +21,14 @@ public class Player {
         return id;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public ActivePowerup getPowerup() {
+        return powerup;
+    }
+
     public Mallet getMallet() {
         return mallet;
     }

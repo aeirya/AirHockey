@@ -18,7 +18,7 @@ public class MenuManager {
     public JPanel make(MenuType menu, IEventHandler e) {
         switch (menu) {
             case START_MENU:
-                return new StartPanel(e);
+                return new StartPanel(api);
             case NEW_GAME_OPTIONS:
                 return null;
             case GAME_TABLE:
