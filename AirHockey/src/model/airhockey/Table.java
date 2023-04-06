@@ -1,8 +1,10 @@
 package model.airhockey;
 
+import game.IGame;
 import logic.CollisionDetector;
 import logic.GameState;
 import model.Goal;
+import model.PlayerID;
 import model.powerup.PowerUp;
 import model.airhockey.wall.MidtableLine;
 import model.gameobject.GameObject;
@@ -27,7 +29,7 @@ public class Table {
     private CollisionDetector collisionDetector;
     private List<Goal> goals;
 
-    public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power) {
+    public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power, IGame game) {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
         mallets = new ArrayList<>();
@@ -52,8 +54,8 @@ public class Table {
         add(new MidtableLine(center, dimension.height));
 //        add(new Goal(leftWallCenter.add(goalSize.getX()/2, 0), goalSize));
 //        add(new Goal(rightWallCenter.add(-goalSize.getX()/2, 0), goalSize));
-        add(new Goal(leftWallCenter, goalSize));
-        add(new Goal(rightWallCenter, goalSize));
+        add(new Goal(leftWallCenter, goalSize, PlayerID.ONE, game));
+        add(new Goal(rightWallCenter, goalSize, PlayerID.TWO, game));
         add(p1);
         add(p2);
         add(power);

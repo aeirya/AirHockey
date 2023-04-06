@@ -1,5 +1,6 @@
 package model;
 
+import game.IGame;
 import model.airhockey.Puck;
 import model.gameobject.GameObject;
 import model.geometric.Circle;
@@ -7,10 +8,14 @@ import model.geometric.Rectangle;
 
 public class Goal extends Rectangle {
     private GoalCollider collider;
+    private PlayerID id;
+    private IGame game;
 
-    public Goal(Vector position, Vector size) {
+    public Goal(Vector position, Vector size, PlayerID id, IGame game) {
         super(position, size);
         collider = new GoalCollider(position, new Dimension(size.getX()/6, size.getY()));
+        this.id = id;
+        this.game = game;
     }
 
     @Override
@@ -35,7 +40,8 @@ public class Goal extends Rectangle {
     }
 
     private void onCollide(Puck puck) {
-        System.out.println("Score!");
+//        System.out.println("Score!");
+        game.goal(this.id);
     }
 
     public Rectangle getInnerCollider() {

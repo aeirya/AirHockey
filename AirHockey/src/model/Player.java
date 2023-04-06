@@ -32,4 +32,8 @@ public class Player {
     public Mallet getMallet() {
         return mallet;
     }
+
+    public void increaseScore() {
+        score++;
+    }
 }

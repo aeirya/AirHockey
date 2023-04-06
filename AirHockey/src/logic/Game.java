@@ -38,13 +38,16 @@ public class Game implements IGame, IGameEventHandler {
                 GuiConfig.getWindowCenter(),
                 player1.getMallet(),
                 player2.getMallet(),
-                powerup);
+                powerup,
+                this);
         state = new GameState();
         time = 0;
 
 //        powerup = null;
         activePowerup = new ActivePowerup();
         eventHandler = new EventHandler();
+
+        startNewGame();
     }
 
     public GameState exportState() {
@@ -92,6 +95,16 @@ public class Game implements IGame, IGameEventHandler {
                 player.getMallet().movePlayer(action);
 //            }
         };
+    }
+
+    @Override
+    public void goal(PlayerID goalID) {
+        if (goalID == PlayerID.ONE) {
+            player2.increaseScore();
+        }
+        if (goalID == PlayerID.TWO) {
+            player1.increaseScore();
+        }
     }
 
     @Override
