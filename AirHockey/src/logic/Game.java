@@ -20,6 +20,7 @@ public class Game implements IGame, IGameEventHandler {
     private Player player2;
     private PowerUp powerup;
     private ActivePowerup activePowerup;
+    private GameLoopThread gameLoop;
     private IEventHandler eventHandler;
 
     public Game() {
@@ -53,6 +54,25 @@ public class Game implements IGame, IGameEventHandler {
     }
 
     @Override
+    public void startNewGame() {
+        if (gameLoop != null && gameLoop.isAlive())
+            gameLoop.interrupt();
+
+        //todo
+        loop();
+    }
+
+    @Override
+    public void pause() {
+        gameLoop.interrupt();
+    }
+
+    @Override
+    public void resume() {
+        loop();
+    }
+
+    @Override
     public void movePlayer(PlayerMoveAction action) {
         Player player = player2;
         if (action.playerID == 0) player = player1;
@@ -76,7 +96,8 @@ public class Game implements IGame, IGameEventHandler {
     }
 
     public void loop() {
-        new GameLoopThread(table).start();
+        gameLoop = new GameLoopThread(table);
+        gameLoop.start();
     }
 
     @Override

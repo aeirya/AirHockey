@@ -6,6 +6,6 @@ public class App {
         Game game = new Game();
         Window window = new Window(game);
         window.loop();
-        game.loop();
+        //game.loop();
     }
 }

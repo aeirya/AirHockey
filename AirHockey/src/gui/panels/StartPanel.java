@@ -3,6 +3,7 @@ package gui.panels;
 import event.IEventHandler;
 import event.MenuEvent;
 import event.MenuEventHandler;
+import game.IGame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +14,10 @@ import java.awt.event.ActionListener;
  * Main Menu
  */
 public class StartPanel extends Panel {
-    public StartPanel(IEventHandler handler) {
+    private IGame game;
+    public StartPanel(IGame handler) {
         super(handler);
+        this.game = handler;
         setLayout(new GridBagLayout());
         add(new CenterPanel(), new GridBagConstraints());
     }
@@ -30,7 +33,8 @@ public class StartPanel extends Panel {
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             
             add(newButton("New Game", e->{
-                dispatchGameEvent(meh -> ((MenuEventHandler) meh).startNewGame());
+                //dispatchGameEvent(meh -> ((MenuEventHandler) meh).startNewGame());
+                dispatchGameEvent(ev -> game.startNewGame());
             }));
             add(new JButton("Show Previous Games"));
             add(new JButton("Quit Game"));
