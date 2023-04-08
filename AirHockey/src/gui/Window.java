@@ -48,7 +48,7 @@ public class Window extends JFrame {
 
     public void loop() {
         new WindowThread(this, GameParameters.FPS).start();
-        new LoopThread(2){
+        new LoopThread(GameParameters.GAME_REFRESH_INTERVAL){
             @Override
             protected void runOnce() {
                 input.pushKeyboardEvents();

@@ -1,5 +1,6 @@
 package model.gameobject;
 
+import game.GameParameters;
 import model.Vector;
 
 /** Mobile objects */

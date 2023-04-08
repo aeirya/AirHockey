@@ -76,13 +76,13 @@ public class Puck extends Circle {
 
     private void decelerate(double dt) {
         double dv = dt * getDeceleration();
-        System.out.println("DV: " + dv);
+//        System.out.println("DV: " + dv);
         if (dv + getMinSpeed() > getVelocity().getSize()) {
             setVelocity(getVelocity().direction(getMinSpeed()));
         } else {
             setVelocity(getVelocity().direction(getVelocity().getSize() - dv));
         }
-        System.out.println("V: " + getVelocity());
+//        System.out.println("V: " + getVelocity());
     }
 
     private int getDeceleration() {
@@ -102,12 +102,11 @@ public class Puck extends Circle {
         Vector malletProject = mallet.getVelocity().project(malletToPuck).multi(0.9);
         // only push
         if (malletToPuck.dot(getVelocity()) > 0) {
-            System.out.println("dir: " + malletToPuck.toString());
-            System.out.println("mallet speed: " + mallet.getVelocity().toString());
-            System.out.println("proj" + malletProject.toString());
-            System.out.println("v: " + getVelocity().toString());
+//            System.out.println("dir: " + malletToPuck.toString());
+//            System.out.println("mallet speed: " + mallet.getVelocity().toString());
+//            System.out.println("proj" + malletProject.toString());
+//            System.out.println("v: " + getVelocity().toString());
             setVelocity(getVelocity().add(malletProject));
-//            setVelocity(getVelocity().add(mallet.getVelocity()));
         } else {
             Vector projection = getVelocity().project(malletToPuck);
             Vector normal = getVelocity().sub(projection);

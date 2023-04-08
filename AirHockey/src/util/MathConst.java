@@ -1,5 +1,5 @@
 package util;
 
 public class MathConst {
-    public static int EPSILON = 10;
+    public static int EPSILON = 0;
 }

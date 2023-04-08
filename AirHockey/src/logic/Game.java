@@ -46,8 +46,6 @@ public class Game implements IGame, IGameEventHandler {
 //        powerup = null;
         activePowerup = new ActivePowerup();
         eventHandler = new EventHandler();
-
-        startNewGame();
     }
 
     public GameState exportState() {
@@ -92,7 +90,9 @@ public class Game implements IGame, IGameEventHandler {
         circle.move(action.getVector());
         if (!table.intersectsCenterLine(circle)) {
 //            if (!table.intersectsAny(player.getMallet())) {
+            if (!table.intersectsAfterMove(player.getMallet(), action.getVector())) {
                 player.getMallet().movePlayer(action);
+            }
 //            }
         };
     }

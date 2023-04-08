@@ -15,15 +15,14 @@ public class HorizontalWall extends Wall {
     protected void bounce(MovableGameObject go) {
         Vector v = go.getVelocity();
         go.setVelocity(v.getX(), -v.getY());
-        pushAway(go);
     }
 
     public void pushAway(MovableGameObject go) {
         if (!(go instanceof Circle)) return;
         int r = ((Circle) go).getRadius();
-        int y = getY() - r - 1;
+        int y = getY() - r;
         if (getY() < go.getY()) {
-            y = getY() + r - 1;
+            y = getY() + r;
         }
         go.setPosition(go.getX(), y);
     }

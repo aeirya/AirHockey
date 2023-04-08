@@ -67,6 +67,16 @@ public class CollisionDetector {
         return allObjects().anyMatch(obj -> obj != go && obj.intersects(go));
     }
 
+    public boolean intersectsAny(GameObject go, boolean onlyStatic) {
+        if (onlyStatic) {
+            return staticObjects.stream().anyMatch(obj -> obj != go && obj.intersects(go));
+        } else return intersectsAny(go);
+    }
+
+    public boolean intersectsAny(GameObject go, List<GameObject> excludeList) {
+        return allObjects().filter(o -> !excludeList.contains(o)).anyMatch(o -> o.intersects(go));
+    }
+
     private Stream<GameObject> allObjects() {
         return Stream.concat(staticObjects.stream(), dynamicObjects.stream());
     }

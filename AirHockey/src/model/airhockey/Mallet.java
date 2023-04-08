@@ -41,13 +41,13 @@ public class Mallet extends Circle {
     private void onCollide(Wall wall) {
         exitTimer.cancel();
         currentBarrier = wall;
-        if (wall instanceof HorizontalWall) {
-            stayOnLeftOrTop = getY() < wall.getY();
-        }
-        if (wall instanceof VerticalWall) {
-            stayOnLeftOrTop = getX() < wall.getX();
-        }
-        wall.pushAway(this);
+//        if (wall instanceof HorizontalWall) {
+//            stayOnLeftOrTop = getY() < wall.getY();
+//        }
+//        if (wall instanceof VerticalWall) {
+//            stayOnLeftOrTop = getX() < wall.getX();
+//        }
+//        wall.pushAway(this);
     }
 
     @Override
@@ -81,18 +81,18 @@ public class Mallet extends Circle {
 
     @Override
     public void move(int dx, int dy) {
-        if (currentBarrier != null)  {
-            if (stayOnLeftOrTop) {
-                if (
-                        getX() + getRadius() + dx > currentBarrier.getX() ||
-                        getY() + getRadius() + dy > currentBarrier.getY()
-                ) return;
-            } else {
-                if (
-                        getX() - getRadius() + dx < currentBarrier.getX() ||
-                        getY() - getRadius() + dy < currentBarrier.getY()
-                ) return;
-            }
+//        if (currentBarrier != null)  {
+//            if (stayOnLeftOrTop) {
+//                if (
+//                        getX() + getRadius() + dx > currentBarrier.getX() ||
+//                        getY() + getRadius() + dy > currentBarrier.getY()
+//                ) return;
+//            } else {
+//                if (
+//                        getX() - getRadius() + dx < currentBarrier.getX() ||
+//                        getY() - getRadius() + dy < currentBarrier.getY()
+//                ) return;
+//            }
 //            if (currentBarrier instanceof VerticalWall) {
 //                int distX = getX() - currentBarrier.getX();
 //                if (distX * (distX + dx) < 0) return;
@@ -101,7 +101,8 @@ public class Mallet extends Circle {
 //                int distY = getY() - currentBarrier.getY();
 //                if (distY * (distY + dy) < 0) return;
 //            }
-        }
+//        }
+//        if (currentBarrier != null && currentBarrier.dist(this) > currentBarrier.dist(this.movedCollider())) return;
         super.move(dx, dy);
     }
 
@@ -115,6 +116,24 @@ public class Mallet extends Circle {
     }
 
     public void movePlayer(PlayerMoveAction action) {
-        setVelocity(action.getVector().multi(getMaxSpeed()));
+        setVelocity(actionToVelocity(action));
+    }
+
+    private Vector actionToVelocity(PlayerMoveAction action) {
+        return action.getVector().multi(getMaxSpeed());
+    }
+
+    public GameObject movedCollider(PlayerMoveAction action) {
+//        double dt = GameParameters.GAME_REFRESH_INTERVAL;
+        double dt = 1000;
+        Vector v = actionToVelocity(action);
+        return movedCollider(v.multi(2*dt));
+    }
+
+    @Override
+    public boolean intersects(Wall wall) {
+        boolean result = super.intersects(wall);
+        if (result) System.out.println("intersectinnnng");
+        return result;
     }
 }

@@ -27,7 +27,6 @@ public class Circle extends MovableGameObject {
         setColor(color);
     }
 
-
     public Circle(Circle circle) {
         this(circle.getPosition(), circle.getVelocity(), circle.getRadius());
     }
@@ -57,4 +56,7 @@ public class Circle extends MovableGameObject {
         return wall.dist(this) + MathConst.EPSILON <= this.getRadius();
     }
 
+//    public Circle movedCollider(Vector dx) {
+//        return new Circle(getPosition().add(dx), getRadius());
+//    }
 }

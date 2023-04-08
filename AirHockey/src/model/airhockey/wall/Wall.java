@@ -1,5 +1,6 @@
 package model.airhockey.wall;
 
+import model.airhockey.Mallet;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.airhockey.Puck;
@@ -18,8 +19,13 @@ public abstract class Wall extends GameObject {
 
     @Override
     public void onCollide(GameObject go) {
-        if (go instanceof MovableGameObject) {
+        if (go instanceof Puck) {
             bounce((MovableGameObject) go);
+        }
+        if (go instanceof Mallet) {
+            System.out.println("just collided a mallet");
+            ((Mallet) go).halt();
+            pushAway((MovableGameObject) go);
         }
     }
 

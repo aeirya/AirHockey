@@ -10,8 +10,9 @@ public class GameObject {
     private Vector position; //up left
     private Vector size;
     private Color color;
+    private boolean isCollided = false;
 
-    protected GameObject(Vector position) {
+    public GameObject(Vector position) {
         this.position = position;
     }
 
@@ -37,9 +38,11 @@ public class GameObject {
         return this;
     }
 
-    public void onCollide(GameObject other) {}
+    public void onCollide(GameObject other) {
+    }
 
-    public void onExit(GameObject other) {}
+    public void onExit(GameObject other) {
+    }
 
     public boolean intersects(GameObject other) {
         return false;
@@ -84,5 +87,9 @@ public class GameObject {
 
     public boolean isMobile() {
         return false;
+    }
+
+    public GameObject movedCollider(Vector dx) {
+        return new GameObject(getPosition().add(dx));
     }
 }

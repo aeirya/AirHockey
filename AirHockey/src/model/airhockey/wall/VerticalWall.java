@@ -15,7 +15,7 @@ public class VerticalWall extends Wall {
     protected void bounce(MovableGameObject puck) {
         Vector v = puck.getVelocity();
         puck.setVelocity(-v.getX(), v.getY());
-        pushAway(puck);
+//        pushAway(puck);
     }
 
     public void pushAway(MovableGameObject go) {

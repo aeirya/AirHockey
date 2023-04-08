@@ -118,6 +118,10 @@ public class Table {
         return Math.abs(circle.getX() - center.getX()) < circle.getRadius();
     }
 
+    public boolean intersectsAfterMove(GameObject go, Vector dx) {
+        return collisionDetector.intersectsAny(go.movedCollider(dx), List.of(go));
+    }
+
     public boolean intersectsAny(GameObject go) {
         return collisionDetector.intersectsAny(go);
     }
