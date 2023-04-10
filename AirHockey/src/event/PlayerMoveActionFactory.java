@@ -16,9 +16,12 @@ public class PlayerMoveActionFactory {
         for (Character key: playerKeys) {
             if (keyPressed.getOrDefault(key, false)) {
                 if (Character.isUpperCase(key)) {
-                    isHaste = true;
+//                    isHaste = true;
                 } else {
                     key = Character.toUpperCase(key);
+                }
+                if (key == 'N' || key == 'C') {
+                    isHaste = true;
                 }
                 dx += getDX(key);
                 dy += getDY(key);

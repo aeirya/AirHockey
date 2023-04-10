@@ -11,16 +11,18 @@ public class GameKeys {
     public static final char P1_MOVE_RIGHT = 'D';
     public static final char P1_MOVE_LEFT = 'A';
     public static final char P1_MOVE_UP = 'W';
+    public static final char P1_HASTE = 'C';
 
     public static final char P2_MOVE_DOWN = 'K';
     public static final char P2_MOVE_RIGHT = 'L';
     public static final char P2_MOVE_LEFT = 'J';
     public static final char P2_MOVE_UP = 'I';
+    public static final char P2_HASTE = 'N';
 
     public static final List<Character> player1Keys = upperAndLowerList(
-            P1_MOVE_DOWN, P1_MOVE_LEFT, P1_MOVE_RIGHT, P1_MOVE_UP);
+            P1_MOVE_DOWN, P1_MOVE_LEFT, P1_MOVE_RIGHT, P1_MOVE_UP, P1_HASTE);
     public static final List<Character> player2Keys = upperAndLowerList(
-            P2_MOVE_DOWN, P2_MOVE_LEFT, P2_MOVE_RIGHT, P2_MOVE_UP);
+            P2_MOVE_DOWN, P2_MOVE_LEFT, P2_MOVE_RIGHT, P2_MOVE_UP, P2_HASTE);
 
     private static List<Character> upperAndLowerList(Character... chars) {
         List<Character> list = new ArrayList<>();
