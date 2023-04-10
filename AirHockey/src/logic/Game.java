@@ -90,12 +90,12 @@ public class Game implements IGame, IGameEventHandler {
         circle.move(action.getVector());
 //        if (!table.intersectsCenterLine(circle)) {
 //            if (!table.intersectsAny(player.getMallet())) {
-            if (!table.intersectsAfterMove(player.getMallet(), action.getVector())) {
+//            if (!table.intersectsAfterMove(player.getMallet(), action.getVector())) {
                 player.getMallet().movePlayer(action);
-            } else {
+//            } else {
 //                player.getMallet().halt();
-                System.out.println("NOT GOING ANYWHERE");
-            }
+//                System.out.println("NOT GOING ANYWHERE");
+//            }
 //            }
 //        };
     }

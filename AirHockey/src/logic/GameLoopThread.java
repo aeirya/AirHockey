@@ -20,6 +20,7 @@ public class GameLoopThread extends LoopThread {
     @Override
     protected void runOnce() {
         double dt = (double)getDeltaTime()/1000 * gameSpeed;
+        table.checkOutsideBounds();
         table.checkCollisions();
         table.passTime(dt);
     }

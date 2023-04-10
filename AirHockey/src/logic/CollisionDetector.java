@@ -77,6 +77,10 @@ public class CollisionDetector {
         return allObjects().filter(o -> !excludeList.contains(o)).anyMatch(o -> o.intersects(go));
     }
 
+    public List<GameObject> getDynamicObjects() {
+        return dynamicObjects;
+    }
+
     private Stream<GameObject> allObjects() {
         return Stream.concat(staticObjects.stream(), dynamicObjects.stream());
     }

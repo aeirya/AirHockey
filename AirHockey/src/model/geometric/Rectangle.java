@@ -26,4 +26,20 @@ public class Rectangle extends GameObject {
                 point.getY() < getBottomRight().getY() &&
                 point.getY() > getTopLeft().getY();
     }
+
+    public int getLeftX() {
+        return getX() - getSize().getWidth()/2;
+    }
+
+    public int getRightX() {
+        return getX() + getSize().getWidth()/2;
+    }
+
+    public int getTopY() {
+        return getY() - getSize().getHeight()/2;
+    }
+
+    public int getBottomY() {
+        return getY() + getSize().getHeight()/2;
+    }
 }

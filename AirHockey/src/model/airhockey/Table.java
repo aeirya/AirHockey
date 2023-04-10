@@ -5,6 +5,7 @@ import logic.CollisionDetector;
 import logic.GameState;
 import model.Goal;
 import model.PlayerID;
+import model.geometric.Rectangle;
 import model.powerup.PowerUp;
 import model.airhockey.wall.MidtableLine;
 import model.gameobject.GameObject;
@@ -29,6 +30,8 @@ public class Table {
     private CollisionDetector collisionDetector;
     private List<Goal> goals;
 
+    private Rectangle rect;
+
     public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power, IGame game) {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
@@ -38,6 +41,7 @@ public class Table {
         puck = new Puck(center, new Vector(-1, -1));
         collisionDetector = new CollisionDetector(puck);
 
+        rect = new Rectangle(center, new Vector(dimension.width, dimension.height));
         this.dimension = dimension;
         this.center = center;
 
@@ -93,6 +97,29 @@ public class Table {
         }
     }
 
+    public void checkOutsideBounds() {
+        // check outside bounds
+        for (var go : collisionDetector.getDynamicObjects()) {
+            if (!isInsideTable(go)) {
+                int x = go.getX();
+                int y = go.getY();
+                if (go.getX() < rect.getLeftX()) {
+                    x = rect.getLeftX() + dimension.width/2;
+                }
+                if (go.getX() > rect.getRightX()) {
+                    x = rect.getRightX() - dimension.width/2;
+                }
+                if (go.getY() < rect.getTopY()) {
+                    y = rect.getTopY() + dimension.height/2;
+                }
+                if (go.getY() > rect.getTopY()) {
+                    y = rect.getBottomY() - dimension.height/2;
+                }
+                go.setPosition(x, y);
+            }
+        }
+    }
+
     public void checkCollisions() {
         collisionDetector.checkForBallCollisions();
     }
@@ -124,5 +151,9 @@ public class Table {
 
     public boolean intersectsAny(GameObject go) {
         return collisionDetector.intersectsAny(go);
+    }
+
+    public boolean isInsideTable(GameObject go) {
+        return rect.isInside(go.getPosition());
     }
 }
