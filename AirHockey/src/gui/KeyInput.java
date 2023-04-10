@@ -21,14 +21,12 @@ public class KeyInput extends KeyAdapter {
     }
 
     private char getKey(KeyEvent e) {
-        return e.getKeyChar();
+        return Character.toUpperCase(e.getKeyChar());
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-//        System.out.println("received keypress: " + e.getKeyChar());
         pressedKeys.put(getKey(e), true);
-//        pushKeyboardEvents();
     }
 
     @Override
@@ -43,8 +41,6 @@ public class KeyInput extends KeyAdapter {
 
     private void pushPlayerEvent(int playerID) {
         PlayerMoveAction action = moveFactory.build(pressedKeys, playerID);
-//        if (action.isNonzero()) {
-            eventHandler.handle(action);
-//        }
+        eventHandler.handle(action);
     }
 }

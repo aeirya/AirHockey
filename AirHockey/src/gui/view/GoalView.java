@@ -1,5 +1,6 @@
 package gui.view;
 
+import gui.config.GuiConfig;
 import logic.GameState;
 import model.Dimension;
 import model.Goal;
@@ -22,16 +23,16 @@ public class GoalView implements Drawable {
     public void draw(Graphics2D g) {
         g.setStroke(new BasicStroke(10f));
         g.setColor(Color.LIGHT_GRAY);
-        drawArc(g);
         drawBox(g);
-//        drawInnerBox(g);
         drawInnerCollider(g);
     }
 
     private void drawArc(Graphics2D g) {
+        int arcWidth = width;
+        int arcHeight = height;
         g.drawArc(
-                goal.getPosition().getX() - width/2, goal.getPosition().getY() - height/2,
-                width, height,
+                goal.getPosition().getX() - arcWidth/2, goal.getPosition().getY() - arcHeight/2,
+                arcWidth, arcHeight,
                 -90, 180
         );
     }
@@ -44,8 +45,8 @@ public class GoalView implements Drawable {
         g.drawRoundRect(
                 goal.getTopLeft().getX(), goal.getTopLeft().getY(),
                 goal.getSize().getWidth(), goal.getSize().getHeight(),
-                goal.getSize().getWidth()/2,
-                goal.getSize().getHeight()/2
+                goal.getSize().getWidth()*2/3,
+                goal.getSize().getHeight()*2/3
                 );
     }
 

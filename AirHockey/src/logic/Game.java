@@ -34,7 +34,7 @@ public class Game implements IGame, IGameEventHandler {
 
         powerup = new FastBallPowerUp(GuiConfig.getWindowCenter().add(300, 0), this);
         table = new Table(
-                GuiConfig.getWindowDimension(),
+                GuiConfig.getTableDimension(),
                 GuiConfig.getWindowCenter(),
                 player1.getMallet(),
                 player2.getMallet(),

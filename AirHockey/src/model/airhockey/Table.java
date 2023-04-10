@@ -31,6 +31,11 @@ public class Table {
     private List<Goal> goals;
 
     private Rectangle rect;
+    private Vector leftWallCenter;
+    private Vector rightWallCenter;
+    private final Vector topWallCenter;
+    private final Vector bottomWallCenter;
+
 
     public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power, IGame game) {
         objects = new ArrayList<>();
@@ -45,13 +50,15 @@ public class Table {
         this.dimension = dimension;
         this.center = center;
 
-        Vector leftWallCenter = center.add(-dimension.width/2, 0);
-        Vector rightWallCenter = center.add(+dimension.width/2, 0);
+        leftWallCenter = center.add(-dimension.width/2, 0);
+        rightWallCenter = center.add(+dimension.width/2, 0);
+        topWallCenter = center.add(0, -dimension.height/2);
+        bottomWallCenter = center.add(0, +dimension.height/2);
 
         Vector goalSize = new Vector(dimension.height*2/5, dimension.height*2/5);
 
-        add(new HorizontalWall(center.add(0, -dimension.height/2), dimension.width));
-        add(new HorizontalWall(center.add(0, +dimension.height/2), dimension.width));
+        add(new HorizontalWall(topWallCenter, dimension.width));
+        add(new HorizontalWall(bottomWallCenter, dimension.width));
         add(new VerticalWall(leftWallCenter, dimension.height));
         add(new VerticalWall(rightWallCenter, dimension.height));
 
@@ -155,5 +162,21 @@ public class Table {
 
     public boolean isInsideTable(GameObject go) {
         return rect.isInside(go.getPosition());
+    }
+
+    public Vector getLeftWallCenter() {
+        return leftWallCenter;
+    }
+
+    public Vector getRightWallCenter() {
+        return rightWallCenter;
+    }
+
+    public Vector getTopWallCenter() {
+        return topWallCenter;
+    }
+
+    public Vector getBottomWallCenter() {
+        return bottomWallCenter;
     }
 }
