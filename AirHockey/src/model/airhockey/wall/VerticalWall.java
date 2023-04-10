@@ -19,13 +19,15 @@ public class VerticalWall extends Wall {
     }
 
     public void pushAway(MovableGameObject go) {
-        if (!(go instanceof Circle)) return;
-        int r = ((Circle) go).getRadius();
-        int x = getX() - r - 1;
-        if (getX() < go.getX()) {
-            x = getX() + r + 1;
+        if (go instanceof Mallet mal) {
+            mal.halt();
+            if (mal.getX() < getX()) {
+                mal.setPosition(new Vector(getX() - mal.getRadius(), mal.getY()));
+            } else {
+//                System.out.println("radius is " + mal.getRadius());
+                mal.setPosition(new Vector(getX() + mal.getRadius() + 1, mal.getY()));
+            }
         }
-        go.setPosition(x, go.getY());
     }
 
     @Override

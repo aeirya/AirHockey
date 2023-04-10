@@ -84,12 +84,12 @@ public class Table {
         puck.move(dt);
         for (Mallet mallet : mallets) {
             mallet.move(dt);
-//            if (collisionDetector.checkIntersections(mallet)) {
-//                mallet.move(-dt);
+            if (collisionDetector.checkIntersections(mallet)) {
+                mallet.move(-dt);
 //                if (collisionDetector.checkIntersections(mallet)) {
 //                    mallet.move(2*dt);
 //                }
-//            }
+            }
         }
     }
 

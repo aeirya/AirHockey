@@ -19,6 +19,7 @@ public class MidtableLine extends VerticalWall {
     public void onCollide(GameObject go) {
         if (go instanceof Mallet mal) {
             mal.halt();
+            System.out.println("midtable on!");
             if (mal.getX() < getX()) {
                 mal.setPosition(new Vector(getX() - mal.getRadius(), mal.getY()));
             } else {

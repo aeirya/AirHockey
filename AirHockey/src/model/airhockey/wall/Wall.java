@@ -19,12 +19,12 @@ public abstract class Wall extends GameObject {
 
     @Override
     public void onCollide(GameObject go) {
-        if (go instanceof Puck) {
+        if (go instanceof Puck p) {
+            pushAway(p);
             bounce((MovableGameObject) go);
         }
         if (go instanceof Mallet) {
-            System.out.println("just collided a mallet");
-            ((Mallet) go).halt();
+//            System.out.println("just collided a mallet");
             pushAway((MovableGameObject) go);
         }
     }

@@ -28,8 +28,8 @@ public class Window extends JFrame {
         //setMenu(MenuType.GAME_TABLE);
         setMenu(MenuType.GAME_TABLE);
 
-        setVisible(true);
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public void setMenu(MenuType menu) {

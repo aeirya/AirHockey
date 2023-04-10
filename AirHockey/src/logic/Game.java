@@ -88,13 +88,16 @@ public class Game implements IGame, IGameEventHandler {
 
         Circle circle = new Circle(player.getMallet());
         circle.move(action.getVector());
-        if (!table.intersectsCenterLine(circle)) {
+//        if (!table.intersectsCenterLine(circle)) {
 //            if (!table.intersectsAny(player.getMallet())) {
             if (!table.intersectsAfterMove(player.getMallet(), action.getVector())) {
                 player.getMallet().movePlayer(action);
+            } else {
+//                player.getMallet().halt();
+                System.out.println("NOT GOING ANYWHERE");
             }
 //            }
-        };
+//        };
     }
 
     @Override

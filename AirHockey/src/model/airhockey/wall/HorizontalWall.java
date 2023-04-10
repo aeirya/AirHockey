@@ -1,5 +1,6 @@
 package model.airhockey.wall;
 
+import model.airhockey.Mallet;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.gameobject.MovableGameObject;
@@ -18,13 +19,11 @@ public class HorizontalWall extends Wall {
     }
 
     public void pushAway(MovableGameObject go) {
-        if (!(go instanceof Circle)) return;
-        int r = ((Circle) go).getRadius();
-        int y = getY() - r;
-        if (getY() < go.getY()) {
-            y = getY() + r;
+        if (go instanceof Mallet mal) {
+            mal.halt();
+            int y = getY() + ((mal.getY() < getY()) ? -mal.getRadius()-1 : +mal.getRadius()+1);
+            mal.setPosition(mal.getX(), y);
         }
-        go.setPosition(go.getX(), y);
     }
 
     @Override

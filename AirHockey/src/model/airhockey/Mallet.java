@@ -32,7 +32,7 @@ public class Mallet extends Circle {
     }
 
     public void onCollide(Puck puck) {
-        System.out.println("hitting a puck with a mallet");
+//        System.out.println("hitting a puck with a mallet");
 //        puck.setVelocity(
 //                puck.getVelocity().multi(-1).add(this.getVelocity().multi(2))
 //        );
@@ -133,7 +133,7 @@ public class Mallet extends Circle {
     @Override
     public boolean intersects(Wall wall) {
         boolean result = super.intersects(wall);
-        if (result) System.out.println("intersectinnnng");
+//        if (result) System.out.println("intersectinnnng");
         return result;
     }
 }
