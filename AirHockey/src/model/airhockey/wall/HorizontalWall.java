@@ -4,8 +4,6 @@ import model.airhockey.Mallet;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.gameobject.MovableGameObject;
-import model.geometric.Circle;
-import util.MathConst;
 
 public class HorizontalWall extends Wall {
     public HorizontalWall(Vector position, int length) {

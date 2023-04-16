@@ -18,8 +18,8 @@ public class PlayerMoveAction implements IEvent {
         this.isHaste = isHaste;
     }
 
-    public boolean isNonzero() {
-        return dx != 0 || dy != 0;
+    public boolean isZero() {
+        return dx == 0 && dy == 0;
     }
 
     @Override

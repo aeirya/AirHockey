@@ -1,9 +1,7 @@
 package model.airhockey.wall;
 
-import model.Dimension;
 import model.Vector;
 import model.airhockey.Mallet;
-import model.airhockey.Puck;
 import model.gameobject.GameObject;
 
 import java.awt.*;

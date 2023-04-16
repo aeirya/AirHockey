@@ -9,7 +9,6 @@ import gui.config.GuiConfig;
 import gui.event.PlayerMoveAction;
 import model.*;
 import model.airhockey.Table;
-import model.geometric.Circle;
 import model.powerup.ActivePowerup;
 import model.powerup.impl.FastBallPowerUp;
 import model.powerup.PowerUp;
@@ -78,26 +77,12 @@ public class Game implements IGame, IGameEventHandler {
 
     @Override
     public void movePlayer(PlayerMoveAction action) {
-        Player player = player2;
-        if (action.playerID == 0) player = player1;
-
-        if (!action.isNonzero()) {
-            player.getMallet().setVelocity(Vector.ZERO);
-            return;
+        Player player = action.playerID == 0 ? player1 : player2;
+        if (action.isZero()) {
+            player.halt();
+        } else {
+            player.getMallet().movePlayer(action);
         }
-
-        Circle circle = new Circle(player.getMallet());
-        circle.move(action.getVector());
-//        if (!table.intersectsCenterLine(circle)) {
-//            if (!table.intersectsAny(player.getMallet())) {
-//            if (!table.intersectsAfterMove(player.getMallet(), action.getVector())) {
-                player.getMallet().movePlayer(action);
-//            } else {
-//                player.getMallet().halt();
-//                System.out.println("NOT GOING ANYWHERE");
-//            }
-//            }
-//        };
     }
 
     @Override

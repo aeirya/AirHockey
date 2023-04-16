@@ -24,7 +24,6 @@ public abstract class Wall extends GameObject {
             bounce((MovableGameObject) go);
         }
         if (go instanceof Mallet) {
-//            System.out.println("just collided a mallet");
             pushAway((MovableGameObject) go);
         }
     }

@@ -36,7 +36,6 @@ public class Table {
     private final Vector topWallCenter;
     private final Vector bottomWallCenter;
 
-
     public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power, IGame game) {
         objects = new ArrayList<>();
         walls = new ArrayList<>();
@@ -63,8 +62,6 @@ public class Table {
         add(new VerticalWall(rightWallCenter, dimension.height));
 
         add(new MidtableLine(center, dimension.height));
-//        add(new Goal(leftWallCenter.add(goalSize.getX()/2, 0), goalSize));
-//        add(new Goal(rightWallCenter.add(-goalSize.getX()/2, 0), goalSize));
         add(new Goal(leftWallCenter, goalSize, PlayerID.ONE, game));
         add(new Goal(rightWallCenter, goalSize, PlayerID.TWO, game));
         add(p1);
@@ -97,9 +94,6 @@ public class Table {
             mallet.move(dt);
             if (collisionDetector.checkIntersections(mallet)) {
                 mallet.move(-dt);
-//                if (collisionDetector.checkIntersections(mallet)) {
-//                    mallet.move(2*dt);
-//                }
             }
         }
     }

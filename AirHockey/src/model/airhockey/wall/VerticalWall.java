@@ -4,7 +4,6 @@ import model.airhockey.Mallet;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.gameobject.MovableGameObject;
-import model.geometric.Circle;
 
 public class VerticalWall extends Wall {
     public VerticalWall(Vector position, int length) {
@@ -15,7 +14,6 @@ public class VerticalWall extends Wall {
     protected void bounce(MovableGameObject puck) {
         Vector v = puck.getVelocity();
         puck.setVelocity(-v.getX(), v.getY());
-//        pushAway(puck);
     }
 
     public void pushAway(MovableGameObject go) {
@@ -24,7 +22,6 @@ public class VerticalWall extends Wall {
             if (mal.getX() < getX()) {
                 mal.setPosition(new Vector(getX() - mal.getRadius(), mal.getY()));
             } else {
-//                System.out.println("radius is " + mal.getRadius());
                 mal.setPosition(new Vector(getX() + mal.getRadius() + 1, mal.getY()));
             }
         }

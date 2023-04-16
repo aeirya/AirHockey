@@ -8,23 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class CollisionMap {
-//    private int lastIndex;
-//    private Map<GameObject, Integer> map;
-    private Map<GameObject, List<GameObject>> collisions;
+    private final Map<GameObject, List<GameObject>> collisions;
 
     public CollisionMap() {
-//        map = new HashMap<>();
         collisions = new HashMap<>();
-//        lastIndex = 0;
     }
-//
-//    public void add(GameObject go) {
-//        map.putIfAbsent(go, lastIndex++);
-//    }
-//
-//    private int getIndex(GameObject go) {
-//        return map.get(go);
-//    }
 
     public void collide(GameObject go, GameObject other) {
         add(go, other);
@@ -36,24 +24,22 @@ public class CollisionMap {
         remove(other, go);
     }
 
-    private List<GameObject> getList(GameObject go) {
+    private List<GameObject> getCollisionList(GameObject go) {
         return collisions.computeIfAbsent(go, key -> new ArrayList<>());
     }
 
-
     private void add(GameObject go, GameObject to) {
-        List<GameObject> list = getList(to);
+        List<GameObject> list = getCollisionList(to);
         if (!list.contains(go)) {
             list.add(go);
         }
     }
 
     private void remove(GameObject go, GameObject from) {
-        List<GameObject> list = getList(from);
-        list.remove(go);
+        getCollisionList(from).remove(go);
     }
 
     public boolean isCollided(GameObject go, GameObject other) {
-        return getList(go).contains(other);
+        return getCollisionList(go).contains(other);
     }
 }

@@ -33,6 +33,10 @@ public class Player {
         return mallet;
     }
 
+    public void halt() {
+        mallet.halt();
+    }
+
     public void increaseScore() {
         score++;
     }

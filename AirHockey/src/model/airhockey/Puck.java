@@ -39,7 +39,6 @@ public class Puck extends Circle {
     }
 
     private void onCollide(Mallet mallet) {
-//        setVelocity(getVelocity().multi(-1));
         bounceOff(mallet);
         exitModeTimer.cancel();
         exitMode = true;
