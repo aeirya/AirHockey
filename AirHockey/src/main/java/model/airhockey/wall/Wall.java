@@ -19,13 +19,21 @@ public abstract class Wall extends GameObject {
 
     @Override
     public void onCollide(GameObject go) {
-        if (go instanceof Puck p) {
-            pushAway(p);
-            bounce((MovableGameObject) go);
+        if (go instanceof Puck puck) {
+            onCollide(puck);
         }
-        if (go instanceof Mallet) {
-            pushAway((MovableGameObject) go);
+        if (go instanceof Mallet mal) {
+            onCollide(mal);
         }
+    }
+
+    protected void onCollide(Mallet mallet) {
+        pushAway(mallet);
+    }
+
+    protected void onCollide(Puck puck) {
+        pushAway(puck);
+        bounce(puck);
     }
 
     protected abstract void bounce(MovableGameObject other);

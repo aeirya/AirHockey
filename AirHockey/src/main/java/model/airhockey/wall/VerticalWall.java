@@ -1,6 +1,7 @@
 package model.airhockey.wall;
 
 import model.airhockey.Mallet;
+import model.airhockey.Puck;
 import model.gameobject.GameObject;
 import model.Vector;
 import model.gameobject.MovableGameObject;
@@ -44,5 +45,10 @@ public class VerticalWall extends Wall {
         return new Vector(
                 getPosition().getX(), getPosition().getY() + getLength()/2
         );
+    }
+
+    @Override
+    protected void onCollide(Puck puck) {
+        super.onCollide(puck);
     }
 }

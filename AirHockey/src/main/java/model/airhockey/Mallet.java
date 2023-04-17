@@ -3,16 +3,24 @@ package model.airhockey;
 import game.GameParameters;
 import gui.config.GuiConfig;
 import gui.event.PlayerMoveAction;
+import model.Player;
 import model.geometric.Circle;
 import model.Vector;
 
 public class Mallet extends Circle {
-    public Mallet(Vector position, int radius) {
+    private final Player player;
+
+    public Mallet(Vector position, int radius, Player player) {
         super(position, radius);
+        this.player = player;
     }
 
-    public Mallet(Vector position) {
-        this(position, GuiConfig.getMalletRadius());
+    public Mallet(Vector position, Player player) {
+        this(position, GuiConfig.getMalletRadius(), player);
+    }
+
+    public Mallet(Player player) {
+        this(Vector.ZERO, GuiConfig.getMalletRadius(), player);
     }
 
     public static int getMaxSpeed() {

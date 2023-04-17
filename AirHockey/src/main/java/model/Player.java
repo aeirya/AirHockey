@@ -11,7 +11,7 @@ public class Player {
     Mallet mallet;
 
     public Player(int id) {
-        mallet = new Mallet(new Vector(0, 0), GuiConfig.getMalletRadius());
+        mallet = new Mallet(new Vector(0, 0), this);
         this.id = id;
         score = 0;
         powerup = null;
