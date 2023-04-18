@@ -1,5 +1,6 @@
 package model.geometric;
 
+import model.Dimension;
 import model.Vector;
 import model.gameobject.GameObject;
 
@@ -9,7 +10,7 @@ public class Rectangle extends GameObject {
         super(position);
     }
 
-    public Rectangle(Vector position, Vector size) {
+    public Rectangle(Vector position, Dimension size) {
         super(position, size);
     }
 

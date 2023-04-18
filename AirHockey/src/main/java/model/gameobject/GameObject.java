@@ -8,7 +8,7 @@ import java.awt.*;
 // TODO: use vector values between zero and one and scale them to screen size
 public class GameObject {
     private Vector position; //up left
-    private Vector size;
+    private Dimension size;
     private Color color;
     private boolean isCollided = false;
 
@@ -16,7 +16,7 @@ public class GameObject {
         this.position = position;
     }
 
-    protected GameObject(Vector position, Vector size) {
+    protected GameObject(Vector position, Dimension size) {
         this.position = position;
         this.size = size;
     }
@@ -33,7 +33,7 @@ public class GameObject {
         setPosition(new Vector(x, y));
     }
 
-    public GameObject setSize(Vector size) {
+    public GameObject setSize(Dimension size) {
         this.size = size;
         return this;
     }
@@ -49,7 +49,7 @@ public class GameObject {
     }
 
     public Dimension getSize() {
-        return new Dimension(size);
+        return size;
     }
 
     public Vector getTopLeft() {

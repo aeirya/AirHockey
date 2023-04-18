@@ -1,3 +1,8 @@
 {
-  "windowHeight": 100
+  "windowSize": {
+      "x": 0.75,
+      "y": 0.75
+  },
+  "puckRadius": 0.7,
+  "goalSize": 0.4
 }

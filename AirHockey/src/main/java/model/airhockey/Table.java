@@ -3,6 +3,7 @@ package model.airhockey;
 import game.IGame;
 import logic.CollisionDetector;
 import logic.GameState;
+import model.Dimension;
 import model.Goal;
 import model.PlayerID;
 import model.geometric.Rectangle;
@@ -15,7 +16,6 @@ import model.airhockey.wall.VerticalWall;
 import model.airhockey.wall.Wall;
 import model.geometric.Circle;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +31,7 @@ public class Table {
     private List<Goal> goals;
 
     private Rectangle rect;
-    private Vector leftWallCenter;
-    private Vector rightWallCenter;
-    private final Vector topWallCenter;
-    private final Vector bottomWallCenter;
+    private RectangleCoordinates coords;
 
     public Table(Dimension dimension, Vector center, Mallet p1, Mallet p2, PowerUp power, IGame game) {
         objects = new ArrayList<>();
@@ -45,25 +42,21 @@ public class Table {
         puck = new Puck(center, new Vector(-1, -1));
         collisionDetector = new CollisionDetector(puck);
 
-        rect = new Rectangle(center, new Vector(dimension.width, dimension.height));
+        rect = new Rectangle(center, dimension);
         this.dimension = dimension;
         this.center = center;
 
-        leftWallCenter = center.add(-dimension.width/2, 0);
-        rightWallCenter = center.add(+dimension.width/2, 0);
-        topWallCenter = center.add(0, -dimension.height/2);
-        bottomWallCenter = center.add(0, +dimension.height/2);
+        coords = new RectangleCoordinates(center, new model.Dimension(dimension));
+        model.Dimension goalSize = new Dimension(dimension.getHeight()*2/5, dimension.getHeight()*2/5);
 
-        Vector goalSize = new Vector(dimension.height*2/5, dimension.height*2/5);
+        add(new HorizontalWall(coords.getTopCenter(), dimension.getWidth()));
+        add(new HorizontalWall(coords.getBottomCenter(), dimension.getWidth()));
+        add(new VerticalWall(coords.getLeftCenter(), dimension.getHeight()));
+        add(new VerticalWall(coords.getRightCenter(), dimension.getHeight()));
 
-        add(new HorizontalWall(topWallCenter, dimension.width));
-        add(new HorizontalWall(bottomWallCenter, dimension.width));
-        add(new VerticalWall(leftWallCenter, dimension.height));
-        add(new VerticalWall(rightWallCenter, dimension.height));
-
-        add(new MidtableLine(center, dimension.height));
-        add(new Goal(leftWallCenter, goalSize, PlayerID.ONE, game));
-        add(new Goal(rightWallCenter, goalSize, PlayerID.TWO, game));
+        add(new MidtableLine(center, dimension.getHeight()));
+        add(new Goal(coords.getLeftCenter(), goalSize, PlayerID.ONE, game));
+        add(new Goal(coords.getRightCenter(), goalSize, PlayerID.TWO, game));
         add(p1);
         add(p2);
         add(power);
@@ -105,16 +98,16 @@ public class Table {
                 int x = go.getX();
                 int y = go.getY();
                 if (go.getX() < rect.getLeftX()) {
-                    x = rect.getLeftX() + dimension.width/2;
+                    x = rect.getLeftX() + dimension.getWidth()/2;
                 }
                 if (go.getX() > rect.getRightX()) {
-                    x = rect.getRightX() - dimension.width/2;
+                    x = rect.getRightX() - dimension.getWidth()/2;
                 }
                 if (go.getY() < rect.getTopY()) {
-                    y = rect.getTopY() + dimension.height/2;
+                    y = rect.getTopY() + dimension.getHeight()/2;
                 }
                 if (go.getY() > rect.getTopY()) {
-                    y = rect.getBottomY() - dimension.height/2;
+                    y = rect.getBottomY() - dimension.getHeight()/2;
                 }
                 go.setPosition(x, y);
             }
@@ -159,18 +152,18 @@ public class Table {
     }
 
     public Vector getLeftWallCenter() {
-        return leftWallCenter;
+        return coords.getLeftCenter();
     }
 
     public Vector getRightWallCenter() {
-        return rightWallCenter;
+        return coords.getRightCenter();
     }
 
     public Vector getTopWallCenter() {
-        return topWallCenter;
+        return coords.getTopCenter();
     }
 
     public Vector getBottomWallCenter() {
-        return bottomWallCenter;
+        return coords.getBottomCenter();
     }
 }

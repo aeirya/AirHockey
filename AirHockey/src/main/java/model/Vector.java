@@ -4,10 +4,15 @@ import java.awt.*;
 import java.awt.Dimension;
 
 public class Vector {
-    private int x;
-    private int y;
+    private final float x;
+    private final float y;
 
     public Vector(int x , int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Vector(float x, float y) {
         this.x = x;
         this.y = y;
     }
@@ -17,11 +22,11 @@ public class Vector {
     }
 
     public int getX() {
-        return x;
+        return (int) x;
     }
 
     public int getY() {
-        return y;
+        return (int) y;
     }
 
     /** Squared euclidean distance of two vectors */
@@ -73,7 +78,7 @@ public class Vector {
     }
 
     public int dot(Vector v) {
-        return x * v.getX() + y * v.getY();
+        return (int) (x * v.getX() + y * v.getY());
     }
 
     /**

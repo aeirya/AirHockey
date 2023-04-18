@@ -1,5 +1,6 @@
 package model.geometric;
 
+import model.Dimension;
 import model.Vector;
 import model.airhockey.wall.Wall;
 import model.gameobject.GameObject;
@@ -15,7 +16,7 @@ public class Circle extends MovableGameObject {
     protected Circle(Vector position, Vector velocity, int radius) {
         super(position, velocity);
         this.radius = radius;
-        setSize(new Vector(2*radius, 2*radius));
+        setSize(new Dimension(2*radius, 2*radius));
     }
 
     public Circle(Vector position, int radius) {

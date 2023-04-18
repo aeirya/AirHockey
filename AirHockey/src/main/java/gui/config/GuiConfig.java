@@ -1,14 +1,14 @@
 package gui.config;
 
 import game.GameParameters;
+import model.Dimension;
 import model.Vector;
-
 import java.awt.*;
 
 public class GuiConfig {
     private static final GuiConfig instance = new GuiConfig();
 
-    private final Dimension displaySize;
+    private final java.awt.Dimension displaySize;
 
     private GuiConfig() {
         displaySize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -56,6 +56,6 @@ public class GuiConfig {
     }
 
     public static int getZoneWidth() {
-        return getTableDimension().width * GuiConstants.ZONE_WIDTH/100;
+        return getTableDimension().getWidth() * GuiConstants.ZONE_WIDTH/100;
     }
 }

@@ -4,7 +4,7 @@ import model.geometric.Circle;
 import model.geometric.Rectangle;
 
 public class GoalCollider extends Rectangle {
-    public GoalCollider(Vector position, Vector size) {
+    public GoalCollider(Vector position, Dimension size) {
         super(position, size);
     }
 

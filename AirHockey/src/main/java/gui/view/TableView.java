@@ -113,7 +113,7 @@ public class TableView extends View {
 
     private void drawZones(Graphics2D g) {
         int width = GuiConfig.getZoneWidth();
-        int height = table.getDimension().height;
+        int height = table.getDimension().getHeight();
         int y = table.getTopWallCenter().getY();
         int x1 = table.getLeftWallCenter().getX();
         int x2 = table.getRightWallCenter().getX() - width;

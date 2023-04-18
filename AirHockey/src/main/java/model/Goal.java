@@ -11,7 +11,7 @@ public class Goal extends Rectangle {
     private PlayerID id;
     private IGame game;
 
-    public Goal(Vector position, Vector size, PlayerID id, IGame game) {
+    public Goal(Vector position, Dimension size, PlayerID id, IGame game) {
         super(position, size);
         collider = new GoalCollider(position, new Dimension(size.getX()/10, size.getY()));
         this.id = id;

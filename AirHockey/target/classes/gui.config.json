@@ -1,3 +1,6 @@
 {
-  "windowHeight": 100
+  "windowDimension": {
+      "x": 2,
+      "y": 3
+  }
 }
