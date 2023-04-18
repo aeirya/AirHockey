@@ -1,6 +1,24 @@
 {
+  "framePerSecond": 60,
   "windowDimension": {
-      "x": 2,
-      "y": 3
+      "x": 0.75,
+      "y": 0.75
+  },
+  "tableDimension": {
+    "x": 0.99,
+    "y": 0.92
+  },
+  "goalSize": 0.4,
+  "malletRadius": 0.06,
+  "puckRadius": 0.04,
+  "tableColor": {
+    "r": 20,
+    "g": 50,
+    "b": 100
+  },
+  "canvasColor": {
+    "r": 200,
+    "g": 200,
+    "b": 200
   }
 }

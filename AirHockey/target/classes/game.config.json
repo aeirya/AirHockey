@@ -1,0 +1,7 @@
+{
+    "tickPerSecond": 120,
+    "puckVelocity": 1,
+    "malletVelocity": 0.7,
+    "puckMass": 0.5,
+    "gameSpeed": 1
+}

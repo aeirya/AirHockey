@@ -1,5 +1,6 @@
 package model.airhockey.wall;
 
+import model.Dimension;
 import model.airhockey.Mallet;
 import model.gameobject.GameObject;
 import model.Vector;
@@ -7,7 +8,7 @@ import model.gameobject.MovableGameObject;
 
 public class HorizontalWall extends Wall {
     public HorizontalWall(Vector position, int length) {
-        super(position, length);
+        super(position, new Dimension(length, Wall.WIDTH));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package model.airhockey.wall;
 
+import model.Dimension;
 import model.airhockey.Mallet;
 import model.airhockey.Puck;
 import model.gameobject.GameObject;
@@ -8,8 +9,10 @@ import model.gameobject.MovableGameObject;
 
 public class VerticalWall extends Wall {
     public VerticalWall(Vector position, int length) {
-        super(position, length);
+        super(position, new Dimension(Wall.WIDTH, length));
     }
+
+
 
     @Override
     protected void bounce(MovableGameObject puck) {

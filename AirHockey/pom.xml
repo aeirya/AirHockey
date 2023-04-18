@@ -33,7 +33,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>App</mainClass>
+                            <mainClass>AirHockey</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

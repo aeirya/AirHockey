@@ -10,14 +10,22 @@ public class RectangleCoordinates {
     private final Vector topCenter;
     private final Vector bottomCenter;
 
-    public RectangleCoordinates(Vector center, Dimension dimension) {
-        int w = dimension.getWidth()/2;
-        int h = dimension.getHeight()/2;
+    private final Vector center;
 
-        leftCenter = center.add(-w, 0);
-        rightCenter = center.add(+w, 0);
-        topCenter = center.add(0, -h);
-        bottomCenter = center.add(0, +h);
+    /* half of width and height */
+    private final int hw;
+    private final int hh;
+
+    public RectangleCoordinates(Vector center, Dimension dimension) {
+        hw = dimension.getWidth()/2;
+        hh = dimension.getHeight()/2;
+
+        leftCenter = center.add(-hw, 0);
+        rightCenter = center.add(+hw, 0);
+        topCenter = center.add(0, -hh);
+        bottomCenter = center.add(0, +hh);
+
+        this.center = center;
     }
 
     public Vector getLeftCenter() {
@@ -34,5 +42,9 @@ public class RectangleCoordinates {
 
     public Vector getBottomCenter() {
         return bottomCenter;
+    }
+
+    public Vector getCenter() {
+        return center;
     }
 }

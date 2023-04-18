@@ -1,41 +1,32 @@
 package logic.collision;
 
+import model.Dimension;
 import model.Vector;
 import model.gameobject.GameObject;
 import model.gameobject.MovableGameObject;
 
 public abstract class Collider {
-    private final GameObject gameObject;
-    private Vector offset;
+    protected final GameObject gameObject;
 
     public Collider(GameObject gameObject) {
         this.gameObject = gameObject;
-        offset = Vector.ZERO;
     }
 
-    public Collider(GameObject gameObject, Vector offset) {
-        this.gameObject = gameObject;
-        this.offset = offset;
-    }
+    public abstract boolean intersects(Collider other);
 
-    public abstract void intersects(Collider other);
-
-    public void willCollide(Collider other, double dt) {
-        offset = getOffset(dt);
-    }
-
-    protected Vector getSize() {
+    protected Dimension getSize() {
         return gameObject.getSize();
     }
 
-    protected Vector getPosition() {
-        return gameObject.getPosition();
+    protected int getWidth() {
+        return getSize().getWidth();
     }
 
-    protected Vector getOffset(double dt) {
-        if (gameObject instanceof MovableGameObject go) {
-            return go.getVelocity().multi(dt);
-        }
-        return Vector.getZero();
+    protected int getHeight() {
+        return getSize().getHeight();
+    }
+
+    protected Vector getCenter() {
+        return gameObject.getPosition();
     }
 }

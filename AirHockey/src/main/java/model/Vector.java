@@ -42,6 +42,19 @@ public class Vector {
         return add(other.multi(-1));
     }
 
+    public Vector abs() {
+        return new Vector(Math.abs(x), Math.abs(y));
+    }
+
+    public boolean lt(Vector other) {
+        return x < other.x && y < other.y;
+    }
+
+    /** sub with absolute values */
+    public Vector diff(Vector other) {
+        return sub(other).abs();
+    }
+
     public Vector add(int dx, int dy) {
         return new Vector(x + dx, y + dy);
     }
